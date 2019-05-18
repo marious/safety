@@ -67,7 +67,8 @@ class Auth extends MY_Controller
 				'type' => 'password',
 			];
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
+//            'auth' . DIRECTORY_SEPARATOR . 'login'
+			$this->_render_page('login', $this->data);
 		}
     }
     

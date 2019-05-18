@@ -22,3 +22,11 @@ function setting($setting_name = null) {
     return $query->row() ? $query->row()->value : '';
   }
 }
+
+
+function active_tab($current)
+{
+    if (isset($_SESSION['active_tab']) && $_SESSION['active_tab'] == $current) {
+        return 'active';
+    }
+}
