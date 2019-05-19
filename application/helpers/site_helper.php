@@ -12,6 +12,15 @@ function is_sidebar_menu_active($current)
 }
 
 
+function is_tree_sidebar_menu_active($first, $second) {
+  $CI =& get_instance();
+    if ($CI->uri->segment(2) == $second && $CI->uri->segment(1) == $first) {
+      return 'active';
+    }
+    return '';
+}
+
+
 /**
  * Get the setting by it's name
  */

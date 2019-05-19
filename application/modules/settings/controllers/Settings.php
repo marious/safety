@@ -54,6 +54,7 @@ class Settings extends MY_Controller
                 }
                 else
                 {
+                    $this->set_session_active_tab($setting_name);
                     $this->make_setting($setting_name, $value);
                 }
 
@@ -76,6 +77,17 @@ class Settings extends MY_Controller
         }
     }
 
+
+    protected function set_session_active_tab($setting_name = '')
+    {
+        if ($setting_name == 'en_contact_address') {
+            $_SESSION['active_tab'] = 'general_content';
+            return;
+        } else if ($setting_name == 'facebook') {
+            $_SESSION['active_tab'] = 'social_media';
+        }
+        return;
+    }
 
 
 

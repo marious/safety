@@ -52,7 +52,7 @@
 
 
     <div class="">
-    <button type="submit" class="btn btn-primary"><?= lang('save'); ?></button>
+    <button type="submit" class="btn btn-success"><?= lang('save'); ?></button>
     </div>
     
 </form>        
