@@ -39,3 +39,63 @@ function active_tab($current)
         return 'active';
     }
 }
+
+
+function addToJson($ar , $en)
+{
+    $text = [
+        'en' => $en,
+        'ar' => $ar,
+    ];
+
+    $json = json_encode($text , JSON_UNESCAPED_UNICODE);
+
+    return $json;
+}
+
+function make_slug($title, $lang = 'en')
+{
+    return $lang == 'ar' ? preg_replace('/[^\x{0600}-\x{06FF}0-9-]+/u', '-', 'معلومات عنا') :
+        strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $title));
+}
+
+function transText($dataField , $lang = null)
+{
+    $text = json_decode($dataField);
+
+//    if ($lang == null)
+//        $lang = app()->getLocale();
+
+    return $text->$lang;
+}
+
+function shortDescrip($descrip , $numb)
+{
+    $desc = words(strip_tags($descrip) , $numb ,' ....');
+    return $desc;
+}
+
+ function words($value, $words = 100, $end = '...')
+{
+    preg_match('/^\s*+(?:\S++\s*+){1,'.$words.'}/u', $value, $matches);
+
+    if (! isset($matches[0]) || get_length($value) === get_length($matches[0])) {
+        return $value;
+    }
+
+    return rtrim($matches[0]).$end;
+}
+
+function get_length($value, $encoding = null)
+{
+    if ($encoding) {
+        return mb_strlen($value, $encoding);
+    }
+
+    return mb_strlen($value);
+}
+
+function dateFormat($date){
+    $newFormat = date('j M Y h:i a',strtotime($date));
+    return $newFormat;
+}

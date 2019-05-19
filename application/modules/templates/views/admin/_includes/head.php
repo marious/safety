@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>dist/css/skins/_all-skins.min.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="<?= base_url().'/assets/admin/css/style.css'; ?>">
 
   <?php if (isset($css_file)): ?>
   <?php if (is_array($css_file)): ?>

@@ -1,0 +1,11 @@
+.seo-info {
+    color: red;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #e4e4e4;
+    padding: 15px;
+}
+
+.error {
+    color: #d14;
+}

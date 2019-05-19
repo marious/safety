@@ -4,6 +4,7 @@ class MY_Model extends CI_Model
 {
     const CREATED_FIELD = 'created_at';
     const UPDATED_AT = 'updated_at';
+    public $upload_path = 'assets/uploads/';
 
     protected $table_name = '';
     protected $primary_key = 'id';
@@ -275,5 +276,72 @@ class MY_Model extends CI_Model
 
     //=========================================================================================
 
+
+    public function do_upload($upload_path = '', $file_name = 'image', $resize = [])
+    {
+        if (empty($resize)) {
+            $resize['width'] = 700;
+            $resize['height'] = 500;
+        }
+//        $upload_path =  FCPATH . "assets/uploads"
+        $config['upload_path']          = FCPATH . $upload_path;
+        $config['allowed_types']        = 'gif|jpg|png|jpeg|JPG|JPEG';
+        $config['max_size']             = 1096;
+        $config['max_width']            = 10240;
+        $config['max_height']           = 20240;
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+
+        if (! $this->upload->do_upload($file_name))
+        {
+            $error = ['error' => $this->upload->display_errors()];
+            $_SESSION['error'] = $error['error'];
+            return false;
+        }
+
+        // upload was success
+        $upload_data = $this->upload->data();
+        $file_name = $upload_data['file_name'];
+        if ($upload_data['image_width'] > 1024 || $upload_data['image_height'] > 1024)
+        {
+            $this->resize_image($resize['width'], $resize['height'], ['source' => $this->upload_path . $file_name, 'destination' => $resize['destination']]);
+        }
+        return $upload_data;
+
+    }
+
+    public function resize_image($width, $height, $file_name = [])
+    {
+
+        $config['image_library'] 	= 'gd2';
+        $config['source_image'] 	=  FCPATH . $file_name['source'];
+        $config['new_image'] 		=  FCPATH . $file_name['destination'];
+        $config['maintain_ratio'] 	= TRUE;
+        $config['create_thumb']     = TRUE;
+        $config['width']         	= $width;
+        $config['height']       	= $height;
+
+        $this->load->library('image_lib');
+        $this->image_lib->initialize($config);
+        if (!$this->image_lib->resize()) {
+            echo $this->image_lib->display_errors();
+        }
+        $this->image_lib->clear();
+    }
+
+
+
+
+
+    public function delete_file($file_name)
+    {
+        $file_path = FCPATH . $file_name;
+        if (file_exists($file_path))
+        {
+            unlink($file_path);
+        }
+        return;
+    }
 
 }

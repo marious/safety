@@ -3,7 +3,6 @@
 class Settings extends MY_Controller 
 {
 
-    const UPLOAD_PATH = 'assets/uploads/';
 
 
     public function __construct()
@@ -40,7 +39,7 @@ class Settings extends MY_Controller
                 {
                     $_SESSION['active_tab'] = 'logo';
 
-                    if ($file = $this->do_upload(self::UPLOAD_PATH, 'logo',
+                    if ($file = $this->Setting_model->do_upload($this->Setting_model->upload_path, 'logo',
                     ['width' => 700, 'height' => 500, 'destination' => 'assets/uploads'])) {
                         $file_path = substr($file['full_path'], strpos($file['full_path'], 'assets'));
                         $this->make_setting('logo', $file_path);
@@ -91,71 +90,6 @@ class Settings extends MY_Controller
 
 
 
-    protected function do_upload($upload_path = '', $file_name = 'image', $resize = [])
-    {
-        if (empty($resize)) {
-            $resize['width'] = 700;
-            $resize['height'] = 500;
-        }
-//        $upload_path =  FCPATH . "assets/uploads"
-        $config['upload_path']          = FCPATH . $upload_path;
-        $config['allowed_types']        = 'gif|jpg|png|jpeg|JPG|JPEG';
-        $config['max_size']             = 1096;
-        $config['max_width']            = 10240;
-        $config['max_height']           = 20240;
 
-        $this->load->library('upload');
-        $this->upload->initialize($config);
-
-        if (! $this->upload->do_upload($file_name))
-        {
-            $error = ['error' => $this->upload->display_errors()];
-            $_SESSION['error'] = $error['error'];
-            return false;
-        }
-
-        // upload was success
-        $upload_data = $this->upload->data();
-        $file_name = $upload_data['file_name'];
-        if ($upload_data['image_width'] > 1024 || $upload_data['image_height'] > 1024)
-        {
-            $this->resize_image($resize['width'], $resize['height'], ['source' => self::UPLOAD_PATH . $file_name, 'destination' => $resize['destination']]);
-        }
-        return $upload_data;
-
-    }
-
-    protected function resize_image($width, $height, $file_name = [])
-    {
-
-        $config['image_library'] 	= 'gd2';
-        $config['source_image'] 	=  FCPATH . $file_name['source'];
-        $config['new_image'] 		=  FCPATH . $file_name['destination'];
-        $config['maintain_ratio'] 	= TRUE;
-        $config['create_thumb']     = TRUE;
-        $config['width']         	= $width;
-        $config['height']       	= $height;
-
-        $this->load->library('image_lib');
-        $this->image_lib->initialize($config);
-        if (!$this->image_lib->resize()) {
-            echo $this->image_lib->display_errors();
-        }
-        $this->image_lib->clear();
-    }
-
-
-
-
-
-    protected function delete_file($file_name)
-    {
-        $file_path = FCPATH . $file_name;
-        if (file_exists($file_path))
-        {
-            unlink($file_path);
-        }
-        return;
-    }
 
 }
