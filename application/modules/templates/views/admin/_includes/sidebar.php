@@ -22,7 +22,21 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <!-- <li class="header">MAIN NAVIGATION</li> -->
+
+          <li class="treeview <?= is_sidebar_menu_active('users'); ?>">
+              <a href="#"><i class="fa fa-user"></i> <span><?= lang('users') ?></span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+                <li class="<?= is_tree_sidebar_menu_active('users', 'all'); ?>"><a href="<?= site_url('users/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_users'); ?></a></li>
+                <li class="<?= is_tree_sidebar_menu_active('users', 'add'); ?>"><a href="<?= site_url('users/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+
+            </ul>
+          </li>
+
+          <!-- <li class="header">MAIN NAVIGATION</li> -->
         <li class="treeview <?= is_sidebar_menu_active('services'); ?>">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span><?= lang('services'); ?></span>
@@ -36,7 +50,7 @@
           </ul>
         </li>
      
-        <li class="<?= is_sidebar_menu_active('settings'); ?>"><a href="<?= site_url('settings') ?>"><i class="fa fa-gear"></i> <span>Settings</span></a></li>
+        <li class="<?= is_sidebar_menu_active('settings'); ?>"><a href="<?= site_url('settings') ?>"><i class="fa fa-gear"></i> <span><?= lang('settings') ?></span></a></li>
         
       </ul>
     </section>

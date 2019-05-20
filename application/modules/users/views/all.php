@@ -1,31 +1,29 @@
 <div class="row">
     <div class="col-md-12">
 
-            <div class="box box-info">
-                <div class="box-body">
+        <div class="box box-info">
+            <div class="box-body">
 
 
-                    <table id="service-table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th><?= lang('en_service_name') ?></th>
-                                <th><?= lang('ar_service_name') ?></th>
-                                <th><?= lang('en_description') ?></th>
-                                <th><?= lang('ar_description') ?></th>
-                                <th><?= lang('featured_image') ?></th>
-                                <th><?= lang('created_at'); ?></th>
-                                <th><?= lang('actions'); ?></th>
-                            </tr>
-                        </thead>
-                    </table>
+                <table id="users-table" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th><?= lang('id') ?></th>
+                        <th><?= lang('username') ?></th>
+                        <th><?= lang('email') ?></th>
+                        <th><?= lang('role_group') ?></th>
+                        <th><?= lang('created_at') ?></th>
+                        <th><?= lang('actions'); ?></th>
+                    </tr>
+                    </thead>
+                </table>
 
 
 
 
 
-                </div>
             </div>
+        </div>
 
 
     </div>
