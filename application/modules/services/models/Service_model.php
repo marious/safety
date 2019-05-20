@@ -81,9 +81,10 @@ class Service_model extends MY_Model
 
         $number_filter_row = $q2->num_rows();
         $data = [];
+        $i = 1;
         foreach ($q->result() as $row) {
             $sub_array =[];
-            $sub_array[] = $row->id;
+            $sub_array[] = $i;
             $sub_array[] = transText($row->name, 'en');
             $sub_array[] = transText($row->name, 'ar');
             $sub_array[] = shortDescrip(transText($row->description, 'en'), 25);
@@ -92,6 +93,7 @@ class Service_model extends MY_Model
             $sub_array[] = dateFormat($row->created_at);
             $sub_array[] = draw_actions_button(site_url('services/add/' . $row->id), site_url('services/delete/'.$row->id));
             $data[] = $sub_array;
+            $i++;
         }
         $output = [
             "draw" => intval($_POST['draw']),
