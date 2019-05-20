@@ -29,13 +29,14 @@ class Services extends MY_Controller
 
   public function add($id = null)
   {
-    $this->data['page_header'] = '<i class="fa fa-arrow-circle-o-right"></i> '.lang('add_new_service');
+    $this->data['page_header'] = $id && is_numeric($id) ? '<i class="fa fa-arrow-circle-o-right"></i> '.lang('edit_service')  : '<i class="fa fa-arrow-circle-o-right"></i> '.lang('add_new_service');
     $this->data['css_file'] = [base_url() . '/assets/admin/css/summernote.css'];
     $this->data['js_file'] = [base_url() . '/assets/admin/js/summernote.js', base_url() . 'assets/admin/js/handle_editor.js'];
 
       if ($id && is_numeric($id))
       {
-
+            $this->data['service'] = $this->Service_model->get($id);
+            $this->data['id'] = $id;    // flag used in view
       }
       else if ($id == null)
       {
@@ -43,46 +44,62 @@ class Services extends MY_Controller
           $this->data['id'] = false;
       }
 
+
+
       // Process the form
       $this->load->library('form_validation');
       $this->form_validation->set_rules($this->Service_model->rules);
 
       // upload featured image
-      if (isset($_FILES['image']))
+      // Will produce $_SESSION['error'] is something happen
+      if (isset($_FILES['image']) && $_FILES['image']['name'] != '')
       {
           if ($file = $this->Service_model->do_upload($this->Service_model->upload_path, 'image')) {
               $data['image'] = substr($file['full_path'], strpos($file['full_path'], 'assets'));
-          } else {
-              $this->session->mark_as_flash('error');
-              redirect('services/add');
-          }
+          } 
       }
 
       // upload banner image
-      if (isset($_FILES['banner']))
+      // Will produce $_SESSION['error'] is something happen
+      if (isset($_FILES['banner']) && $_FILES['banner']['name'] != '')
       {
           if ($file = $this->Service_model->do_upload($this->Service_model->upload_path, 'banner')) {
               $data['banner'] = substr($file['full_path'], strpos($file['full_path'], 'assets'));
-          } else {
-              $this->session->mark_as_flash('error');
-              redirect('services/add');
-          }
+          } 
       }
 
 
 
       if ($this->form_validation->run($this) == TRUE)
       {
+            
+            if (isset($_SESSION['error']))
+            {
+                $this->session->mark_as_flash('error');
+                $this->admin_template('add', $this->data);
+                return;
+            }
+
             $data['name'] = addToJson($this->input->post('ar_name'), $this->input->post('en_name'));
             $data['description'] = addToJson($this->input->post('ar_description'), $this->input->post('en_description'));
             $data['slug'] = addToJson(make_slug($this->input->post('en_name')), make_slug($this->input->post('ar_name'), 'ar'));
-            $this->Service_model->save($data);
-            $_SESSION['success'] = 'Saved';
+            $this->Service_model->save($data, $id);
+            $_SESSION['success'] = $id ? lang('scucess_edit') : lang('success_add');
             $this->session->mark_as_flash('success');
-            redirect('services/add');
+            redirect('services/all');
       }
     $this->admin_template('add', $this->data);
   }
 
+
+
+  public function delete($id = null) 
+  {
+      $id && is_numeric($id) || redirect('services/all');
+      $this->Service_model->delete($id);
+      $_SESSION['success'] = lang('success_delete');
+      $this->session->mark_as_flash('success');
+      redirect('services/all');
+  }
 
 }

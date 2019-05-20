@@ -9,7 +9,7 @@
 <!--            </div>-->
         <?php endif; ?>
 
-        <form class="form-horizontal" action="<?= site_url('services/add'); ?>" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="<?= site_url('services/add/'.$id); ?>" method="post" enctype="multipart/form-data">
             <div class="box box-info">
                 <div class="box-body">
                     <!-- EN service name -->
@@ -17,7 +17,7 @@
                         <label for="en_name" class="col-sm-2 control-label"><?= lang('en_service_name') ?> <span>*</span></label>
                         <div class="col-sm-6">
                             <input type="text" id="en_name" autocomplete="off" class="form-control" name="en_name"
-                                   value="<?php echo set_value('en_name') ?>">
+                                   value="<?php echo set_value('en_name', transText($service->name, 'en')) ?>">
                             <?php echo form_error('en_name', '<div class="error">', '</div>'); ?>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <label for="ar_name" class="col-sm-2 control-label"><?= lang('ar_service_name') ?> <span>*</span></label>
                         <div class="col-sm-6">
                             <input type="text" id="ar_name" autocomplete="off" class="form-control" name="ar_name"
-                                   value="<?php echo set_value('ar_name'); ?>">
+                                   value="<?php echo set_value('ar_name', transText($service->name, 'ar')); ?>">
                             <?php echo form_error('ar_name', '<div class="error">', '</div>'); ?>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label for="en_description" class="col-sm-2 control-label"><?= lang('en_description') ?> <span>*</span></label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" name="en_description" id="editor1"><?php echo set_value('en_description'); ?></textarea>
+                            <textarea class="form-control" name="en_description" id="editor1"><?php echo set_value('en_description', transText($service->description, 'en')); ?></textarea>
                             <?php echo form_error('en_description', '<div class="error">', '</div>'); ?>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label for="ar_description" class="col-sm-2 control-label"><?= lang('ar_description') ?> <span>*</span></label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" name="ar_description" id="editor2"><?php echo set_value('en_description'); ?></textarea>
+                            <textarea class="form-control" name="ar_description" id="editor2"><?php echo set_value('ar_description', transText($service->description, 'ar')); ?></textarea>
                             <?php echo form_error('ar_description', '<div class="error">', '</div>'); ?>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         <label for="meta_title" class="col-sm-2 control-label"><?= lang('meta_title'); ?> </label>
                         <div class="col-sm-9">
                             <input type="text" id="meta_title" autocomplete="off" class="form-control" name="meta_title"
-                                   value="<?php if(isset($_POST['meta_title'])){echo $_POST['meta_title'];} ?>">
+                                   value="<?php echo set_value('meta_title', $service->meta_title); ?>">
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@
                         <label for="meta_keyword" class="col-sm-2 control-label"><?= lang('meta_keywords') ?> </label>
                         <div class="col-sm-9">
                             <input type="text" id="meta_keyword" autocomplete="off" class="form-control" name="meta_keyword"
-                                   value="<?php if(isset($_POST['meta_keyword'])){echo $_POST['meta_keyword'];} ?>">
+                                   value="<?php echo set_value('meta_keyword', $service->meta_keyword); ?>">
                         </div>
                     </div>
 
@@ -90,7 +90,7 @@
                     <div class="form-group">
                         <label for="meta_description" class="col-sm-2 control-label"><?= lang('meta_description') ?> </label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="meta_description" name="meta_description" style="height:140px;"><?php if(isset($_POST['meta_description'])){echo $_POST['meta_description'];} ?></textarea>
+                            <textarea class="form-control" id="meta_description" name="meta_description" style="height:140px;"><?php echo set_value('meta_description', $service->meta_description); ?></textarea>
                         </div>
                     </div>
 

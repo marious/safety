@@ -95,6 +95,12 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url() . '/assets/admin/'; ?>dist/js/adminlte.min.js"></script>
 
+<script>
+  $('#confirm-delete').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+  });
+</script>
+
 <?php if (isset($js_file)): ?>
 <?php if (is_array($js_file)): ?>
 <?php foreach ($js_file as $file): ?>

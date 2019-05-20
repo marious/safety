@@ -61,12 +61,15 @@ function make_slug($title, $lang = 'en')
 
 function transText($dataField , $lang = null)
 {
-    $text = json_decode($dataField);
+    if($dataField != '') {
+        $text = json_decode($dataField);
+        return $text->$lang;
+    }
+    return '';
 
 //    if ($lang == null)
 //        $lang = app()->getLocale();
 
-    return $text->$lang;
 }
 
 function shortDescrip($descrip , $numb)
@@ -98,4 +101,20 @@ function get_length($value, $encoding = null)
 function dateFormat($date){
     $newFormat = date('j M Y h:i a',strtotime($date));
     return $newFormat;
+}
+
+
+
+
+function draw_actions_button($dit_link = '', $delete_link = '')
+{
+    $output = '';
+    if ($dit_link) {
+        $output .= '<a href="'.$dit_link.'" class="btn btn-sm btn-primary" title="'.lang('edit').'"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;';
+    }
+    if ($delete_link)
+    {
+        $output .= '<a data-href="'.$delete_link.'" class="btn btn-sm btn-danger" title="'.lang('delete').'" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>';
+    }
+    return $output;
 }
