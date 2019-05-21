@@ -32,8 +32,20 @@
             <ul class="treeview-menu">
                 <li class="<?= is_tree_sidebar_menu_active('users', 'all'); ?>"><a href="<?= site_url('users/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_users'); ?></a></li>
                 <li class="<?= is_tree_sidebar_menu_active('users', 'add'); ?>"><a href="<?= site_url('users/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
-
             </ul>
+          </li>
+
+
+          <li class="treeview <?= is_sidebar_menu_active('roles'); ?>">
+              <a href="#"><i class="fa fa-key"></i> <span><?= lang('roles_and_permissions') ?></span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li class="<?= is_tree_sidebar_menu_active('roles', 'all'); ?>"><a href="<?= site_url('roles/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_roles'); ?></a></li>
+                  <li class="<?= is_tree_sidebar_menu_active('roles', 'add'); ?>"><a href="<?= site_url('roles/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+              </ul>
           </li>
 
           <!-- <li class="header">MAIN NAVIGATION</li> -->

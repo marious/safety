@@ -30,3 +30,7 @@ $lang['id'] = 'ID';
 $lang['role_group'] = 'Role Group';
 $lang['email'] = 'E-mail';
 $lang['username'] = 'Username';
+$lang['roles_and_permissions'] = 'Roles & Permissions';
+$lang['all_roles'] = 'All Roles';
+$lang['permissions'] = 'Permissions';
+$lang['permission_name'] = 'Permission Name';

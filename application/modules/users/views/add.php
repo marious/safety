@@ -4,6 +4,8 @@
         <form class="form-horizontal" action="<?= site_url('users/add/'.$id); ?>" method="post" enctype="multipart/form-data">
             <div class="box box-info">
                 <div class="box-body">
+
+                    <?php if (isset($note)): ?><p class="text-green note-text"><?= $note; ?></p><?php endif; ?>
                     <!-- username -->
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label"><?= lang('username') ?> <span class="error">*</span></label>

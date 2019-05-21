@@ -36,16 +36,21 @@ class Users extends MY_Controller
         {
             $this->data['user'] = $this->ion_auth->user($id)->row();
             $this->data['id'] = $id;
+            $this->data['note'] = lang('password_note');
+            $rules = $this->User_Model->rules_without_password();
         }
         else
         {
             $this->data['user'] = $this->User_Model->get_new();
             $this->data['id'] = false;
+            $rules = $this->User_Model->rules;
         }
 
         // Process the form
         $this->load->library('form_validation');
-        $this->form_validation->set_rules($this->User_Model->rules);
+
+
+        $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run($this) == true)
         {
@@ -56,11 +61,11 @@ class Users extends MY_Controller
             $group = $this->input->post('role_group');
             
             if ($id) {
-                $this->ion_auth->update($id, [
-                    'username' => $username,
-                    'email' => $email,
-                    'password' => $password,
-                ]);
+                $data = ['username' => $username, 'email' => $email];
+                if (!empty($password)) {
+                    $data['password'] = $password;
+                }
+                $this->ion_auth->update($id, $data);
                 $this->ion_auth->remove_from_group(false, $id);
                 $this->ion_auth->add_to_group($group, $id);
                 $_SESSION['success'] = 'User Updated Successfully';
@@ -79,6 +84,15 @@ class Users extends MY_Controller
         $this->admin_template('add', $this->data);
     }
 
+
+    public function delete($id)
+    {
+        $id && is_numeric($id) || redirect('users/all');
+        $this->ion_auth->delete_user($id);
+        $_SESSION['success'] = lang('success_delete');
+        $this->session->mark_as_flash('success');
+        redirect('users/all');
+    }
 
 
     public function _unique_username($str)
@@ -134,6 +148,11 @@ class Users extends MY_Controller
 
    public function test()
    {
-       var_dump($this->ion_auth->get_users_groups(3)->result());
+        $rules = $this->User_Model->rules;
+        var_dump($rules);
+        $id = array_search('password', array_column($rules, 'field'));
+        $id2 = array_search('conf_password', array_column($rules, 'field'));
+        unset($rules[$id], $rules[$id2]);
+        var_dump($rules);
    }
 }

@@ -32,6 +32,28 @@ class User_Model extends MY_Model
         ]
     ];
 
+
+
+    public function rules_without_password()
+    {
+        $rules = $this->User_Model->rules;
+        $id = array_search('password', array_column($rules, 'field'));
+        $id2 = array_search('conf_password', array_column($rules, 'field'));
+        unset($rules[$id], $rules[$id2]);
+        $rules[] =  [
+            'field' => 'password',
+            'label' => 'lang:password',
+            'rules' => 'trim|min_length[4]',
+        ];
+        $rules[] = [
+            'field' => 'conf_password',
+            'label' => 'lang:conf_password',
+            'rules' => 'trim|matches[password]',
+        ];
+        return $rules;
+    }
+
+
     public function get_all_groups()
     {
         $query = 'SELECT * FROM groups';
