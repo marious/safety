@@ -26,11 +26,18 @@ class User_Model extends MY_Model
             'rules' => 'trim|required|matches[password]',
         ],
         [
-            'field' => 'role_group',
+            'field' => 'role_group[]',
             'label' => 'lang:role_group',
-            'rules' => 'trim|required|callback__verify_role_group',
+            'rules' => 'required|callback__verify_role_group',
         ]
     ];
+
+    public function get_all_groups()
+    {
+        $query = 'SELECT * FROM groups';
+        $q = $this->db->query($query);
+        return $q->result();
+    }
 
 
     public function get_all_users()

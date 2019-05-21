@@ -45,34 +45,45 @@
                         </div>
                     </div>
 
+                    <hr>
 
                     <div class="form-group">
-                        <label for="role_group" class="col-sm-2 control-label"><?= lang('role_group') ?> <span class="error">*</span></label>
-                        <div class="col-sm-6">
-                            <select name="role_group" id="role_group" class="form-control">
-                                <option value="0">-- <?= lang('select_role_group') ?> --</option>
-                                <?php if (is_array($groups) && count($groups)): ?>
-                                <?php $selected = ''; ?>
-                                    <?php foreach($groups as $group): ?>
-                                        <?php
-                                            $group_temp = $this->ion_auth->get_users_groups($user->id)->row();
-                                            if ($user->id && $group) {
-                                                if ($group_temp->id == $group->id) {
-                                                    $selected = 'selected';
-                                                }
-                                            }
-                                        ?>
-                                        <option value="<?= $group->id; ?>" <?= $selected; ?>><?= $group->name; ?></option>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </select>
-                            <?php echo form_error('role_group', '<div class="error">', '</div>'); ?>
-                        </div>
+                       
+
+                      
+                         <label for="role_group" class="control-label col-sm-2"><?= lang('role_group') ?> <span class="error">*</span></label>
+
+                    <div class="col-sm-6">
+                    <?php
+                    $user_groups_arr = [];
+                    $checked = '';
+                    if ($user->id) {
+                        $user_groups = $this->ion_auth->get_users_groups($user->id)->result();
+                        foreach($user_groups as $group) {
+                            $user_groups_arr[] = $group->id;
+                        }
+                    }
+                     ?>
+                    <?php if (is_array($groups) && count($groups)): ?>
+                    <?php foreach ($groups as $group): ?>
+                    <?php
+                    if (in_array($group->id, $user_groups_arr)) {
+                        $checked = 'checked';
+                    } else {
+                        $checked = '';
+                    }
+                    ?>
+                   <label class="block-label"><input type="checkbox" value="<?= $group->id ?>" class="minimal" name="role_group[]" <?= $checked; ?>>  &nbsp;&nbsp;<?= $group->name; ?></label>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    <div class="error"><?= form_error('role_group') ?></div>
                     </div>
+                    </div>
+                    
 
+                    
 
-
-
+<br>
 
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label"></label>
@@ -83,8 +94,6 @@
                 </div>
             </div>
         </form>
-
-
     </div>
 </div>
-</div>
+

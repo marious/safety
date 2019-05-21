@@ -28,6 +28,10 @@ class Users extends MY_Controller
     public function add($id = null)
     {
         $this->data['page_header'] = $id && is_numeric($id) ? lang('edit_user') : lang('add_new_user');
+        $this->data['css_file'] = [site_url('assets/admin/plugins/iCheck/all.css')];
+        $this->data['js_file'] = [site_url('assets/admin/plugins/iCheck/icheck.min.js')];
+        $this->data['icheck'] = true;
+    
         if ($id && is_numeric($id))
         {
             $this->data['user'] = $this->ion_auth->user($id)->row();
@@ -45,18 +49,33 @@ class Users extends MY_Controller
 
         if ($this->form_validation->run($this) == true)
         {
+    
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $email = $this->input->post('email');
-            $group = array($this->input->post('role_group'));
-            $this->ion_auth->register($username, $password, $email, [], $group);
-            $_SESSION['success'] = 'User Created Successfully';
+            $group = $this->input->post('role_group');
+            
+            if ($id) {
+                $this->ion_auth->update($id, [
+                    'username' => $username,
+                    'email' => $email,
+                    'password' => $password,
+                ]);
+                $this->ion_auth->remove_from_group(false, $id);
+                $this->ion_auth->add_to_group($group, $id);
+                $_SESSION['success'] = 'User Updated Successfully';
+            } else {
+                $this->ion_auth->register($username, $password, $email, [], $group);
+                $_SESSION['success'] = 'User Created Successfully';
+
+            }
             $this->session->mark_as_flash('success');
             redirect('users/all');
         }
 
 
-        $this->data['groups'] = $this->ion_auth->groups()->result();
+        // $this->data['groups'] = $this->ion_auth->groups()->result();
+        $this->data['groups'] = $this->User_Model->get_all_groups();
         $this->admin_template('add', $this->data);
     }
 
@@ -91,25 +110,30 @@ class Users extends MY_Controller
 
     public function _verify_role_group()
     {
-        // check if empty
-        if ($this->input->post('role_group') == '0')
-        {
-            $this->form_validation->set_message('_verify_role_group', 'Please choose a role group for the user');
-            return false;
-        } else {
-            $group = $this->ion_auth->group($this->input->post('role_group'))->row();
-            if (!$group) {
-                $this->form_validation->set_message('_verify_role_group', 'Please select a valid role group');
-                return false;
+
+        $groups = $this->input->post('role_group');
+        
+        $valid = true;
+        if (is_array($groups) && count($groups)) {
+            foreach ($groups as $group) {
+                if ($this->ion_auth->group($group)->row() == null) {
+                    $valid = false;
+                    break;
+                }
             }
+        }
+        if ($valid == false) {
+            $this->form_validation->set_message('_verify_role_group', 'Please select a valid role group');
+            return false;
         }
 
         return true;
+
     }
 
 
-//    public function test()
-//    {
-//        var_dump($this->ion_auth->get_users_groups(5)->row()->id);exit;
-//    }
+   public function test()
+   {
+       var_dump($this->ion_auth->get_users_groups(3)->result());
+   }
 }

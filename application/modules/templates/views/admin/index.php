@@ -111,5 +111,13 @@
 <?php endif; ?>
 <?php endif; ?>
 
+<?php if(isset($icheck) && $icheck == true): ?>
+<script>
+$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+  checkboxClass: 'icheckbox_minimal-blue',
+  radioClass   : 'iradio_minimal-blue'
+});</script>
+<?php endif; ?>
+
 </body>
 </html>
