@@ -34,3 +34,6 @@ $lang['roles_and_permissions'] = 'Roles & Permissions';
 $lang['all_roles'] = 'All Roles';
 $lang['permissions'] = 'Permissions';
 $lang['permission_name'] = 'Permission Name';
+$lang['name'] = 'Name';
+$lang['description'] = 'Description';
+$lang['permissions'] = 'Permissions';

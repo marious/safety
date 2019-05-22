@@ -12,8 +12,12 @@ class Roles extends MY_Controller
 
 
 
-    public function permissions()
+    
+    public function all()
     {
-
+        $this->data['page_header'] = 'All Roles';
+        $this->data['roles'] = $this->Role_model->get_roles();
+        $this->admin_template('all', $this->data);
     }
+
 }
