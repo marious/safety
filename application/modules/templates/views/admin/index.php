@@ -113,11 +113,16 @@
 
 <?php if(isset($icheck) && $icheck == true): ?>
 <script>
-$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-  checkboxClass: 'icheckbox_minimal-blue',
-  radioClass   : 'iradio_minimal-blue'
-});</script>
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass   : 'iradio_minimal-blue'
+    });
+
+</script>
 <?php endif; ?>
+
+<?php if (isset($footer_script)){ echo $footer_script; }  ?>
+
 
 </body>
 </html>

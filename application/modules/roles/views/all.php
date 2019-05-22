@@ -12,10 +12,22 @@
                                 <th><?= lang('name') ?></th>
                                 <th><?= lang('description') ?></th>
                                 <th><?= lang('permissions') ?></th>
-                                <th><?= lang('created_at') ?></th>
                                 <th><?= lang('actions') ?></th>
                             </tr>
                         </thead>
+                        <tbody>
+                        <?php $i = 1; foreach ($roles as $role): ?>
+                        <tr>
+                            <td><?= $i; ?></td>
+                            <td><?= $role->name; ?></td>
+                            <td><?= $role->description; ?></td>
+                            <td><?= $this->Role_model->format_permissions_for_view($this->Role_model->get_permissions_for_group($role->id)) ?></td>
+                            <td>
+                                <?= draw_actions_button(site_url('roles/edit/' . $role->id), site_url('roles/delete/' . $role->id)); ?>
+                            </td>
+                        </tr>
+                        <?php $i++; endforeach; ?>
+                        </tbody>
                     </table>
 
                 </div>
