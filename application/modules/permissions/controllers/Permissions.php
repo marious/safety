@@ -9,8 +9,11 @@ class Permissions extends MY_Controller
         $this->load->model('Permission_model');
     }
 
+
+
     public function add()
     {
+
         $this->data['page_header'] = lang('permissions');
 
         $this->load->library('form_validation');

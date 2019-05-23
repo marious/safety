@@ -88,11 +88,49 @@
           </ul>
       </li>
 <?php endif; ?>
-  
 
 
-     
-        <li class="<?= is_sidebar_menu_active('settings'); ?>"><a href="<?= site_url('settings') ?>"><i class="fa fa-gear"></i> <span><?= lang('settings') ?></span></a></li>
+
+          <?php if (in_array('show_products', $logged_in_user_permissions)): ?>
+              <li class="treeview <?= is_sidebar_menu_active('products'); ?>">
+                  <a href="#">
+                      <i class="fa fa-cubes"></i> <span><?= lang('products'); ?></span>
+                      <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li class="<?= is_tree_sidebar_menu_active('products', 'all'); ?>"><a href="<?= site_url('products/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_products'); ?></a></li>
+                      <?php if(in_array('add_products', $logged_in_user_permissions)): ?>
+                          <li class="<?= is_tree_sidebar_menu_active('products', 'add'); ?>"><a href="<?= site_url('products/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+                      <?php endif; ?>
+                  </ul>
+              </li>
+          <?php endif; ?>
+
+
+          <?php if (in_array('show_clients', $logged_in_user_permissions)): ?>
+              <li class="treeview <?= is_sidebar_menu_active('clients'); ?>">
+                  <a href="#">
+                      <i class="fa fa-users"></i> <span><?= lang('clients'); ?></span>
+                      <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li class="<?= is_tree_sidebar_menu_active('clients', 'all'); ?>"><a href="<?= site_url('clients/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_clients'); ?></a></li>
+                      <?php if(in_array('ass_clients', $logged_in_user_permissions)): ?>
+                          <li class="<?= is_tree_sidebar_menu_active('clients', 'add'); ?>"><a href="<?= site_url('clients/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+                      <?php endif; ?>
+                  </ul>
+              </li>
+          <?php endif; ?>
+
+
+
+
+
+          <li class="<?= is_sidebar_menu_active('settings'); ?>"><a href="<?= site_url('settings') ?>"><i class="fa fa-gear"></i> <span><?= lang('settings') ?></span></a></li>
         
       </ul>
     </section>

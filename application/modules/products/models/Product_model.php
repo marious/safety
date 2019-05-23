@@ -1,0 +1,130 @@
+<?php
+
+class Product_model extends MY_Model
+{
+    protected $table_name = 'products';
+    protected $timestamps = true;
+
+    public $rules = [
+        [
+            'field' => 'en_name',
+            'label' => 'lang:en_product_name',
+            'rules' => 'trim|required'
+        ],
+        [
+            'field' => 'ar_name',
+            'label' => 'lang:ar_product_name',
+            'rules' => 'trim|required'
+        ],
+        [
+            'field' => 'en_description',
+            'label' => 'lang:en_description',
+            'rules' => 'trim|required',
+        ],
+        [
+            'field' => 'ar_description',
+            'label' => 'lang:ar_description',
+            'rules' => 'trim|required',
+        ],
+        [
+            'field' => 'category_id',
+            'label' => 'lang:category',
+            'rules' => 'trim|required|callback__valid_category_id'
+        ]
+    ];
+
+
+    public function get_all_products()
+    {
+
+        // for ordering
+        $columns[0] = 'products.id';
+        $columns[6] = 'products.created_at';
+
+
+        $query = "SELECT products.*, categories.name AS category_name 
+                  FROM products INNER JOIN categories 
+                  ON products.category_id = categories.id";
+
+        $binds = [];
+        if (isset($_POST['search']['value']))
+        {
+            $query .= ' WHERE products.name LIKE ? ';
+            $query .= ' OR products.slug LIKE ? ';
+            $query .= ' OR categories.name LIKE ? ';
+            $query .= ' OR products.description LIKE ? ';
+        }
+
+
+        if (isset($_POST['order']))
+        {
+            $query .= ' ORDER BY ' . $columns[$_POST['order'][0]['column']] . ' ' .
+                $_POST['order'][0]['dir'] . ' ';
+        }
+        else {
+            $query .= ' ORDER BY id  ';
+        }
+
+
+        $query1 = '';
+        if (isset($_POST['length']) && $_POST['length'] != -1)
+        {
+            $query1 .= ' LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+        }
+        if (isset($_POST['search']['value']))
+        {
+            $search_value = trim($_POST['search']['value']);
+            $binds[] =  '%' . $search_value . '%';
+            $binds[] =  '%' . $search_value . '%';
+            $binds[] =  '%' . $search_value . '%';
+            $binds[] =  '%' . $search_value . '%';
+        }
+
+        if (isset($_POST['length']) && $_POST['length'] != -1)
+        {
+            $q = $this->db->query($query . ' ' . $query1, $binds);
+        }
+        else
+        {
+            $q = $this->db->query($query, $binds);
+        }
+
+        $q2 = $this->db->query($query, $binds);
+
+        $number_filter_row = $q2->num_rows();
+        $data = [];
+        $i = 1;
+
+        foreach ($q->result() as $row) {
+            $sub_array =[];
+            $sub_array[] = $i;
+            $sub_array[] = transText($row->name, 'en');
+            $sub_array[] = transText($row->name, 'ar');
+            $sub_array[] = transText($row->category_name, 'en');
+            $sub_array[] = shortDescrip(transText($row->description, 'en'), 25);
+            $sub_array[] = shortDescrip(transText($row->description, 'ar'), 25);
+            $sub_array[] = ($row->image) ? '<img src="'.site_url($row->image).'" width="80px" height="60px">' : '';
+            $sub_array[] = dateFormat($row->created_at);
+            $sub_array[] = draw_actions_button(site_url('products/edit/' . $row->id), site_url('products/delete/'.$row->id), 'products');
+            $data[] = $sub_array;
+            $i++;
+        }
+
+        $output = [
+            "draw" => intval($_POST['draw']),
+            "recordsTotal"  	=>  $this->get_products_count(),
+            "recordsFiltered" 	=> $number_filter_row,
+            "data"    			=> $data,
+        ];
+        echo json_encode($output);
+
+    }
+
+
+    public function get_products_count()
+    {
+        $query = "SELECT * FROM products";
+        $q = $this->db->query($query);
+        return $q->num_rows();
+    }
+}

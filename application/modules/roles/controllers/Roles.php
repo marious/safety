@@ -144,9 +144,13 @@ class Roles extends MY_Controller
             $permissions[] = $this->get_permissions_for_group($user_group->id);
         }
 
-        $result = [];
-        array_walk_recursive($permissions,function($v) use (&$result){ $result[] = $v->name; });
-        return $result;
+        if (isset($permissions[0]) && $permissions[0])
+        {
+            $result = [];
+            array_walk_recursive($permissions,function($v) use (&$result){ $result[] = $v->name; });
+            return $result;
+        }
+        return [];
         
     }
 
