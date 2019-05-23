@@ -91,7 +91,7 @@ class Service_model extends MY_Model
             $sub_array[] = shortDescrip(transText($row->description, 'ar'), 25);
             $sub_array[] = ($row->image) ? '<img src="'.site_url($row->image).'" width="80px" height="60px">' : '';
             $sub_array[] = dateFormat($row->created_at);
-            $sub_array[] = draw_actions_button(site_url('services/add/' . $row->id), site_url('services/delete/'.$row->id));
+            $sub_array[] = draw_actions_button(site_url('services/edit/' . $row->id), site_url('services/delete/'.$row->id), 'services');
             $data[] = $sub_array;
             $i++;
         }

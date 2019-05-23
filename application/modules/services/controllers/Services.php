@@ -7,6 +7,10 @@ class Services extends MY_Controller
   {
       parent::__construct();
       $this->middleware->execute_middlewares(['not_authinticated']);
+      $this->middleware->only(['check_permission:show_services'], ['all']);
+      $this->middleware->only(['check_permission:add_services'], ['add']);
+      $this->middleware->only(['check_permission:edit_services'], ['edit']);
+      $this->middleware->only(['check_permission:delete_services'], ['delete']);
       $this->lang->load('services');
       $this->load->model('Service_model');
   }
@@ -89,6 +93,12 @@ class Services extends MY_Controller
             redirect('services/all');
       }
     $this->admin_template('add', $this->data);
+  }
+
+
+  public function edit($id)
+  {
+      $this->add($id);
   }
 
 

@@ -118,7 +118,7 @@ class User_Model extends MY_Model
             $sub_array[] = $this->ion_auth->get_users_groups($row->id)->row()->name;
             $sub_array[] = date('j M Y h:i a', $row->created_on);
 //            $sub_array[] = dateFormat($row->created_at);
-            $sub_array[] = draw_actions_button(site_url('users/add/' . $row->id), site_url('users/delete/'.$row->id));
+            $sub_array[] = draw_actions_button(site_url('users/edit/' . $row->id), site_url('users/delete/'.$row->id), 'users');
             $data[] = $sub_array;
         }
         $output = [

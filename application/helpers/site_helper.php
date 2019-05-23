@@ -55,7 +55,7 @@ function addToJson($ar , $en)
 
 function make_slug($title, $lang = 'en')
 {
-    return $lang == 'ar' ? preg_replace('/[^\x{0600}-\x{06FF}0-9-]+/u', '-', 'معلومات عنا') :
+    return $lang == 'ar' ? preg_replace('/[^\x{0600}-\x{06FF}0-9-]+/u', '-', $title) :
         strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $title));
 }
 
@@ -106,15 +106,33 @@ function dateFormat($date){
 
 
 
-function draw_actions_button($dit_link = '', $delete_link = '')
+function draw_actions_button($dit_link = '', $delete_link = '', $permission_group = '')
 {
     $output = '';
-    if ($dit_link) {
+    $logged_in_user_permissions = Modules::run('roles/get_active_user_permissions');
+
+    
+    if ($dit_link && in_array('edit' . '_' . $permission_group, $logged_in_user_permissions)) {
         $output .= '<a href="'.$dit_link.'" class="btn btn-sm btn-primary" title="'.lang('edit').'"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;';
     }
-    if ($delete_link)
+    if ($delete_link && in_array('delete' . '_' . $permission_group, $logged_in_user_permissions))
     {
         $output .= '<a data-href="'.$delete_link.'" class="btn btn-sm btn-danger" title="'.lang('delete').'" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>';
     }
     return $output;
+}
+
+
+
+function get_current_lang()
+{
+    if (!isset($_SESSION['lang']) && !isset($_GET['lang']) && isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+    {
+            $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    } 
+    else if (isset($_SESSION['lang'])) {
+        $lang = $lang;
+    }
+
+    return $lang;
 }

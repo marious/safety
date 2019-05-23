@@ -23,6 +23,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
 
+      <?php if (in_array('show_users', $logged_in_user_permissions)): ?>
           <li class="treeview <?= is_sidebar_menu_active('users'); ?>">
               <a href="#"><i class="fa fa-user"></i> <span><?= lang('users') ?></span>
                   <span class="pull-right-container">
@@ -31,9 +32,13 @@
               </a>
             <ul class="treeview-menu">
                 <li class="<?= is_tree_sidebar_menu_active('users', 'all'); ?>"><a href="<?= site_url('users/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_users'); ?></a></li>
+<?php if (in_array('add_users', $logged_in_user_permissions)): ?>
                 <li class="<?= is_tree_sidebar_menu_active('users', 'add'); ?>"><a href="<?= site_url('users/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+<?php endif; ?>
             </ul>
           </li>
+<?php endif; ?>
+
 
 
           <li class="treeview <?= is_sidebar_menu_active('roles'); ?>">
@@ -49,6 +54,7 @@
           </li>
 
           <!-- <li class="header">MAIN NAVIGATION</li> -->
+        <?php if (in_array('show_services', $logged_in_user_permissions)): ?>
         <li class="treeview <?= is_sidebar_menu_active('services'); ?>">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span><?= lang('services'); ?></span>
@@ -58,9 +64,33 @@
           </a>
           <ul class="treeview-menu">
             <li class="<?= is_tree_sidebar_menu_active('services', 'all'); ?>"><a href="<?= site_url('services/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_services'); ?></a></li>
+            <?php if(in_array('add_services', $logged_in_user_permissions)): ?>
             <li class="<?= is_tree_sidebar_menu_active('services', 'add'); ?>"><a href="<?= site_url('services/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+<?php endif; ?>
           </ul>
         </li>
+<?php endif; ?>
+
+
+<?php if (in_array('show_categories', $logged_in_user_permissions)): ?>
+      <li class="treeview <?= is_sidebar_menu_active('categories') ?>">
+        <a href="#">
+            <i class="fa fa-server"></i> <span><?= lang('categories'); ?></span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          <li class="<?= is_tree_sidebar_menu_active('categories', 'all'); ?>"><a href="<?= site_url('categories/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_categories'); ?></a></li>
+          <?php if(in_array('add_categories', $logged_in_user_permissions)): ?>
+          <li class="<?= is_tree_sidebar_menu_active('categories', 'add'); ?>"><a href="<?= site_url('categories/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+<?php endif; ?>
+          </ul>
+      </li>
+<?php endif; ?>
+  
+
+
      
         <li class="<?= is_sidebar_menu_active('settings'); ?>"><a href="<?= site_url('settings') ?>"><i class="fa fa-gear"></i> <span><?= lang('settings') ?></span></a></li>
         

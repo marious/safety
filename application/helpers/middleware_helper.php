@@ -10,3 +10,26 @@ function not_authinticated()
 
     return true;
 }
+
+
+
+function check_permission($permission_name)
+{
+    $CI =& get_instance();
+    $user_groups = $CI->ion_auth->get_users_groups()->result();
+        $permissions = [];
+        foreach ($user_groups as $user_group) {
+            $permissions[] = Modules::run('roles/get_permissions_for_group', $user_group->id);
+        }
+
+
+        $result = [];
+        array_walk_recursive($permissions,function($v) use (&$result){ $result[] = $v->name; });
+        if (in_array($permission_name, $result)) {
+            return true;
+        }
+        show_404();
+        return false;
+        
+
+}

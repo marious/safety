@@ -6,6 +6,10 @@ class Users extends MY_Controller
     {
         parent::__construct();
         $this->middleware->execute_middlewares(['not_authinticated']);
+        $this->middleware->only(['check_permission:add_users'], ['add']);
+        $this->middleware->only(['check_permission:edit_users'], ['edit']);
+        $this->middleware->only(['check_permission:show_users'], ['all']);
+        $this->middleware->only(['check_permission:delete_users'], ['delete']);
         $this->lang->load('users');
         $this->load->model('User_Model');
     }
@@ -85,6 +89,13 @@ class Users extends MY_Controller
     }
 
 
+    // For middleware purposes
+    public function edit($id)
+    {
+        $this->add($id);
+    }
+
+
     public function delete($id)
     {
         $id && is_numeric($id) || redirect('users/all');
@@ -148,11 +159,8 @@ class Users extends MY_Controller
 
    public function test()
    {
-        $rules = $this->User_Model->rules;
-        var_dump($rules);
-        $id = array_search('password', array_column($rules, 'field'));
-        $id2 = array_search('conf_password', array_column($rules, 'field'));
-        unset($rules[$id], $rules[$id2]);
-        var_dump($rules);
+       
    }
+
+
 }

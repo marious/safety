@@ -24,7 +24,7 @@ class Role_model extends MY_Model
 
     public function get_permissions_for_group($group_id = false)
     {
-        $query = "SELECT permissions.name, groups.id
+        $query = "SELECT permissions.name, groups.id, permissions.description
                     FROM permissions 
                     INNER JOIN permission_group 
                     ON permission_group.permission_id = permissions.id 
@@ -81,5 +81,26 @@ class Role_model extends MY_Model
             $this->db->insert('permission_group');
         }
         return ;
+    }
+
+
+    public function get_permissions_id_by_group($group_id)
+    {
+        $q = $this->db->select('permission_id')->from('permission_group')->where('group_id', $group_id)->get();
+        if ($q->num_rows()){
+            foreach ($q->result() as $row) {
+                $permision_arr[] = $row->permission_id;
+            }
+            return $permision_arr;
+        }
+        return [];
+    }
+
+
+    public function delete_all_permissions_for_group($group_id)
+    {
+        $this->db->where('group_id', $group_id);
+        $this->db->delete('permission_group');
+        return;
     }
 }

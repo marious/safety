@@ -81,8 +81,17 @@ class Middleware {
 			$next = true;
 			foreach ($middlewares as $middleware) {
 				if ($next === true) {
+					if (strpos($middleware, ':')) {
+						$middleware_and_argments = explode(':', $middleware);
+						$middleware = $middleware_and_argments[0];
+						$argument = $middleware_and_argments[1];
+					}
 					if (function_exists($middleware)) {
-						call_user_func($middleware);
+						if (isset($argument)) {
+							call_user_func($middleware, $argument);
+						} else {
+							call_user_func($middleware);
+						}
 					}
 					else {
 						show_error(500, 'Middleware not defined... Define middleware in application/helpers/middleware_helper.php');

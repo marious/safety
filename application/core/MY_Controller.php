@@ -15,6 +15,13 @@ class MY_Controller extends MX_Controller
       {
           $this->data['view_module'] = $this->uri->segment(1);
       }
+
+      $this->data['logged_in_user_permissions'] = [];
+    if (isset($_SESSION['user_id']))
+    {
+        $this->data['logged_in_user_permissions'] = Modules::run('roles/get_active_user_permissions');
+    }
+
   }
 
 

@@ -21,9 +21,10 @@
                             <td><?= $i; ?></td>
                             <td><?= $role->name; ?></td>
                             <td><?= $role->description; ?></td>
-                            <td><?= $this->Role_model->format_permissions_for_view($this->Role_model->get_permissions_for_group($role->id)) ?></td>
+                            <td class="group-permissions"><?= $this->Role_model->format_permissions_for_view($this->Role_model->get_permissions_for_group($role->id)) ?></td>
                             <td>
-                                <?= draw_actions_button(site_url('roles/edit/' . $role->id), site_url('roles/delete/' . $role->id)); ?>
+                                <a href="<?= site_url('roles/role/' . $role->id) ?>" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;
+                                <?= draw_actions_button(site_url('roles/edit/' . $role->id), site_url('roles/delete/' . $role->id), 'roles'); ?>
                             </td>
                         </tr>
                         <?php $i++; endforeach; ?>
