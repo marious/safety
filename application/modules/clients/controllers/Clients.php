@@ -36,6 +36,7 @@ class Clients extends MY_Controller
 
         if ($id && is_numeric($id))
         {
+            $this->Client_model->get($id) || redirect('clients/all');     // check if valid category id
             $this->data['client'] = $this->Client_model->get($id);
         }
         else

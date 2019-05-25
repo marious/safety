@@ -50,3 +50,7 @@ $lang['products'] = 'Products';
 $lang['all_products'] = 'All Products';
 $lang['add_product'] = 'Add Products';
 $lang['confirm'] = 'Confirm';
+$lang['all_news'] = 'All News';
+$lang['news'] = 'News';
+$lang['pages'] = 'Pages';
+$lang['all_pages'] = 'All Pages';

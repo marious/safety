@@ -151,7 +151,7 @@ class Product_model extends MY_Model
             $sub_array[] = $i;
             $sub_array[] = ($row->image) ? '<img src="'.site_url($row->image).'" width="80px" height="60px">' : '';
             $sub_array[] = dateFormat($row->created_at);
-            $sub_array[] = '<a href="'.site_url('products/delete_product_image/' . $row->id).'" class="btn btn-danger bt-sm" title="Delete" 
+            $sub_array[] = '<a data-href="'.site_url('products/delete_product_image/' . $row->id).'" class="btn btn-sm btn-danger" title="Delete" 
                     data-toggle="modal" data-target="#confirm-delete">
             <i class="fa fa-trash-o"></i></a>';
             $data[] = $sub_array;

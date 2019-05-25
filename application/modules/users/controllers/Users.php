@@ -38,6 +38,7 @@ class Users extends MY_Controller
     
         if ($id && is_numeric($id))
         {
+            $this->User_Model->get($id) || redirect('users/all');     // check if valid user id
             $this->data['user'] = $this->ion_auth->user($id)->row();
             $this->data['id'] = $id;
             $this->data['note'] = lang('password_note');

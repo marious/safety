@@ -123,6 +123,12 @@
 </script>
 <?php endif; ?>
 
+<?php if (isset($_SESSION['success_toastr'])): ?>
+<script>
+    toastr['success']("<?php echo $_SESSION['success_toastr'] ?>");
+</script>
+<?php endif; ?>
+
 <?php if (isset($footer_script)){ echo $footer_script; }  ?>
 
 

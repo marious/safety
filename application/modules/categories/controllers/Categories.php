@@ -7,9 +7,9 @@ class Categories extends MY_Controller
         parent::__construct();
         $this->middleware->execute_middlewares(['not_authinticated']);
         $this->middleware->only(['check_permission:show_categories'], ['all']);
-      $this->middleware->only(['check_permission:add_categories'], ['add']);
-      $this->middleware->only(['check_permission:edit_categories'], ['edit']);
-      $this->middleware->only(['check_permission:delete_categories'], ['delete']);
+        $this->middleware->only(['check_permission:add_categories'], ['add']);
+        $this->middleware->only(['check_permission:edit_categories'], ['edit']);
+        $this->middleware->only(['check_permission:delete_categories'], ['delete']);
         $this->lang->load('categories');
         $this->load->model('Category_model');
     }
@@ -45,6 +45,7 @@ class Categories extends MY_Controller
 
       if ($id && is_numeric($id))
       {
+          $this->Category_model->get($id) || redirect('categories/all');     // check if valid category id
           $this->data['category'] = $this->Category_model->get($id);
       } 
       else
@@ -89,9 +90,6 @@ class Categories extends MY_Controller
       }
 
       $this->admin_template('add', $this->data);
-
-
-
     }
 
 

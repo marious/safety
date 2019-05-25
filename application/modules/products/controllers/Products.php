@@ -84,11 +84,12 @@ class Products extends MY_Controller
     public function delete_product_image($id)
     {
         if ($id && is_numeric($id)) {
-            $product_id = $this->db->get_where('product_images', ['id' => $id])->row()->product_id;
+            $product = $this->db->get_where('product_images', ['id' => $id])->row();
             if ($this->db->delete('product_images', ['id' => $id])) {
-                $_SESSION['success_toaster'] = 'Image Deleted Successfully';
-                $this->session->mark_as_flash('success_toaster');
-                redirect(site_url('products/product/' . $product_id));
+                unlink(FCPATH . $product->image);
+                $_SESSION['success_toastr'] = 'Image Deleted Successfully';
+                $this->session->mark_as_flash('success_toastr');
+                redirect(site_url('products/product/' . $product->product_id));
             }
         }
     }

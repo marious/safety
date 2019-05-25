@@ -39,6 +39,7 @@ class Services extends MY_Controller
 
       if ($id && is_numeric($id))
       {
+            $this->Service_model->get($id) || redirect('services/all');     // check if valid service id
             $this->data['service'] = $this->Service_model->get($id);
             $this->data['id'] = $id;    // flag used in view
       }
