@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>bower_components/toastr/toastr.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins

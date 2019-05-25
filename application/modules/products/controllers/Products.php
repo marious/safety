@@ -31,6 +31,69 @@ class Products extends MY_Controller
     }
 
 
+
+    public function product($id = false)
+    {
+        if($id && is_numeric($id))
+        {
+            $this->data['product'] = $this->Product_model->get($id);
+            $this->data['css_file'] = [base_url(). '/assets/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'];
+            $this->data['js_file'] = [base_url(). '/assets/admin/bower_components/datatables.net/js/jquery.dataTables.min.js',
+            base_url(). '/assets/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js', base_url() . '/assets/admin/js/product.js'];
+            $this->data['product'] || redirect('products/all');   // check if valid products id 
+            $this->data['page_header'] = lang('product_images');
+
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                if (isset($_FILES['image']) && $_FILES['image']['name'] != '')
+                {
+                if ($file = $this->Product_model->do_upload($this->Product_model->upload_path, 'image')) {
+                        $data['image'] = substr($file['full_path'], strpos($file['full_path'], 'assets'));
+                        $this->Product_model->save_image_for_product($id, $data['image']);
+                        echo json_encode([true, 'Image Uploaded Successfully']);
+                        exit;
+                    } else {
+                        if (isset($_SESSION['error'])) {
+                            $error = $_SESSION['error'];
+                            unset($_SESSION['error']);
+                            echo json_encode([false, $error]);
+                            exit;
+                        }
+                    }
+                }
+            }
+
+            $this->admin_template('product', $this->data);
+
+        }   
+        else {
+            redirect('products/all');
+        }
+    }
+
+
+
+    public function load_all_product_images($id)
+    {
+        $this->Product_model->get_product_images($id);
+    }
+
+
+
+    public function delete_product_image($id)
+    {
+        if ($id && is_numeric($id)) {
+            $product_id = $this->db->get_where('product_images', ['id' => $id])->row()->product_id;
+            if ($this->db->delete('product_images', ['id' => $id])) {
+                $_SESSION['success_toaster'] = 'Image Deleted Successfully';
+                $this->session->mark_as_flash('success_toaster');
+                redirect(site_url('products/product/' . $product_id));
+            }
+        }
+    }
+
+
     public function add($id = false)
     {
         $this->data['page_header'] = $id && is_numeric($id) ? '<i class="fa fa-arrow-circle-o-right"></i> '.lang('edit_product')  : '<i class="fa fa-arrow-circle-o-right"></i> '.lang('add_new_product');
@@ -42,6 +105,7 @@ class Products extends MY_Controller
 
         if ($id && is_numeric($id))
         {
+            $this->Product_model->get($id) || redirect('products/all');     // check if valid produt id 
             $this->data['product'] = $this->Product_model->get($id);
         }
         else

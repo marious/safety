@@ -36,3 +36,19 @@
 .group-permissions {
     width: 60%;
 }
+
+.progress-info {
+    display: none;
+}
+
+.progress-info {
+    display: none;
+    width: 90% !important;
+    margin: 0 auto;
+    margin-bottom: 20px;;
+}
+
+#progress-status {
+    padding-left:30px;
+    margin-top: -10px;
+}

@@ -119,7 +119,7 @@
                   </a>
                   <ul class="treeview-menu">
                       <li class="<?= is_tree_sidebar_menu_active('clients', 'all'); ?>"><a href="<?= site_url('clients/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_clients'); ?></a></li>
-                      <?php if(in_array('ass_clients', $logged_in_user_permissions)): ?>
+                      <?php if(in_array('add_clients', $logged_in_user_permissions)): ?>
                           <li class="<?= is_tree_sidebar_menu_active('clients', 'add'); ?>"><a href="<?= site_url('clients/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
                       <?php endif; ?>
                   </ul>

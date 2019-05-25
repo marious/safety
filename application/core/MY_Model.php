@@ -303,10 +303,10 @@ class MY_Model extends CI_Model
         // upload was success
         $upload_data = $this->upload->data();
         $file_name = $upload_data['file_name'];
-        if ($upload_data['image_width'] > 1024 || $upload_data['image_height'] > 1024)
-        {
-            $this->resize_image($resize['width'], $resize['height'], ['source' => $this->upload_path . $file_name, 'destination' => $resize['destination']]);
-        }
+        // if ($upload_data['image_width'] > 1024 || $upload_data['image_height'] > 1024)
+        // {
+        //     $this->resize_image($resize['width'], $resize['height'], ['source' => $this->upload_path . $file_name, 'destination' => $resize['destination']]);
+        // }
         return $upload_data;
 
     }

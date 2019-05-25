@@ -76,6 +76,7 @@
 </div>
 <!-- ./wrapper -->
 
+<script>var root = '<?= site_url(); ?>'</script>
 <!-- jQuery 3 -->
 <script src="<?= base_url() . '/assets/admin/'; ?>bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -92,6 +93,7 @@
 <script src="<?= base_url() . '/assets/admin/'; ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?= base_url() . '/assets/admin/'; ?>bower_components/fastclick/lib/fastclick.js"></script>
+<script src="<?= base_url() . '/assets/admin/'; ?>bower_components/toastr/toastr.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url() . '/assets/admin/'; ?>dist/js/adminlte.min.js"></script>
 

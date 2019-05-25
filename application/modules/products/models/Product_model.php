@@ -105,7 +105,7 @@ class Product_model extends MY_Model
             $sub_array[] = shortDescrip(transText($row->description, 'ar'), 25);
             $sub_array[] = ($row->image) ? '<img src="'.site_url($row->image).'" width="80px" height="60px">' : '';
             $sub_array[] = dateFormat($row->created_at);
-            $sub_array[] = draw_actions_button(site_url('products/edit/' . $row->id), site_url('products/delete/'.$row->id), 'products');
+            $sub_array[] = '<a href="'.site_url('products/product/' . $row->id).'" class="btn btn-primary btn-info" title="product Images"><i class="fa fa-photo"></i></a>&nbsp;&nbsp;'. draw_actions_button(site_url('products/edit/' . $row->id), site_url('products/delete/'.$row->id), 'products');
             $data[] = $sub_array;
             $i++;
         }
@@ -126,5 +126,66 @@ class Product_model extends MY_Model
         $query = "SELECT * FROM products";
         $q = $this->db->query($query);
         return $q->num_rows();
+    }
+
+
+
+
+    public function get_product_images($product_id)
+    {
+        $query = "SELECT * FROM product_images WHERE product_id = ? ";
+        $query1 = '';
+          if (isset($_POST['length']) && $_POST['length'] != -1)
+          {
+              $query1 .= ' LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+              $q = $this->db->query($query . ' ' . $query1, $product_id);
+          }
+
+          $q2 = $this->db->query($query, [$product_id]);
+  
+          $number_filter_row = $q2->num_rows();
+          $data = [];
+          $i = 1;
+          foreach ($q->result() as $row) {
+            $sub_array =[];
+            $sub_array[] = $i;
+            $sub_array[] = ($row->image) ? '<img src="'.site_url($row->image).'" width="80px" height="60px">' : '';
+            $sub_array[] = dateFormat($row->created_at);
+            $sub_array[] = '<a href="'.site_url('products/delete_product_image/' . $row->id).'" class="btn btn-danger bt-sm" title="Delete" 
+                    data-toggle="modal" data-target="#confirm-delete">
+            <i class="fa fa-trash-o"></i></a>';
+            $data[] = $sub_array;
+            $i++;
+        }
+
+        $output = [
+            "draw" => intval($_POST['draw']),
+            "recordsTotal"  	=>  $this->get_product_images_count($product_id),
+            "recordsFiltered" 	=> $number_filter_row,
+            "data"    			=> $data,
+        ];
+        echo json_encode($output);
+    }
+
+
+    public function get_product_images_count($id)
+    {
+        $query = "SELECT * FROM product_images WHERE product_id = ?";
+        $q = $this->db->query($query, [$id]);
+        return $q->num_rows();
+    }
+
+
+    public function save_image_for_product($id = false, $image = false)
+    {
+        if ($id && $image)
+        {
+            $data = [
+                'product_id' => $id,
+                'image' => $image,
+                'created_at' => date('Y-m-d H:i:s'),
+            ];
+            return $this->db->insert('product_images', $data);
+        }
     }
 }

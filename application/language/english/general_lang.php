@@ -49,3 +49,4 @@ $lang['all_clients'] = 'All Clients';
 $lang['products'] = 'Products';
 $lang['all_products'] = 'All Products';
 $lang['add_product'] = 'Add Products';
+$lang['confirm'] = 'Confirm';
