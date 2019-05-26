@@ -15,6 +15,8 @@ class Menu extends MY_Controller
         $this->data['css_file'] = [site_url('assets/admin/plugins/iCheck/all.css')];
         $this->data['js_file'] = [site_url('assets/admin/plugins/jquery.nestable/jquery.nestable.js'), site_url('assets/admin/plugins/iCheck/icheck.min.js'), site_url('assets/admin/js/menu.js')];
         $this->data['icheck'] = true;
+        $this->load->module('pages');
+        $this->data['pages'] = $this->pages->Page_model->get();
 
         $this->data['menus'] = $this->Menu_model->get_menu();
         $this->admin_template('index', $this->data);
@@ -60,7 +62,45 @@ class Menu extends MY_Controller
 
 
         redirect('menu');
+    }
 
+
+    public function save()
+    {
+        $rules = [
+            [
+                'field' => 'menu_name',
+                'label' => 'Menu Name',
+                'rules' => 'trim|required',
+            ],
+            [
+                'field' => 'active',
+                'label' => 'active',
+                'rules' => 'trim|required'
+            ],
+            [
+                'field' => 'module',
+                'label' => 'Module',
+                'rules' => 'trim|required',
+            ]
+        ];
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules($rules);
+        $data = [];
+        if ($this->form_validation->run($this) == true)
+        {
+            $data['menu_name'] = $this->input->post('menu_name');
+            $this->data['active'] = $this->input->post('active');
+            $data['module'] = $this->input->post('module');
+            $menu_lang = isset($_POST['language_title']) ? $this->input->post('language_title') : '';
+            $language = [];
+            $language['title']['id'] = $menu_lang;
+            $data['menu_lang'] = json_encode($language);
+            $this->Menu_model->save($data);
+            redirect('menu');
+
+        }
     }
 
 }

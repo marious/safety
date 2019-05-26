@@ -80,7 +80,7 @@ class Categories extends MY_Controller
 
           $data['name'] = addToJson($this->input->post('ar_name'), $this->input->post('en_name'));
           $data['description'] = addToJson($this->input->post('ar_description'), $this->input->post('en_description'));
-          $data['slug'] = addToJson(make_slug($this->input->post('en_name')), make_slug($this->input->post('ar_name'), 'ar'));
+          $data['slug'] = addToJson(make_slug($this->input->post('ar_name'), 'ar'), make_slug($this->input->post('en_name'), 'en'));
           $data['service_id'] = $this->input->post('service_id');
           
           $this->Category_model->save($data, $id);

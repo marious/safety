@@ -74,7 +74,7 @@ class Pages extends MY_Controller
 
             $data['name'] = addToJson($this->input->post('ar_name'), $this->input->post('en_name'));
             $data['content'] = addToJson($this->input->post('ar_content'), $this->input->post('en_content'));
-            $data['slug'] = addToJson(make_slug($this->input->post('en_name')), make_slug($this->input->post('ar_name'), 'ar'));
+            $data['slug'] = addToJson(make_slug($this->input->post('ar_name'), 'ar'), make_slug($this->input->post('en_name'), 'en'));
             $data['meta_keywords'] = trim($this->input->post('meta_keywords'));
             $data['meta_description'] = trim($this->input->post('meta_description'));
             $data['meta_title'] = trim($this->input->post('meta_title'));
