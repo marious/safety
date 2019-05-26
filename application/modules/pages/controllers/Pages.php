@@ -46,6 +46,8 @@ class Pages extends MY_Controller
         }
 
         $this->data['id'] = $id;
+        $this->data['pages_layout'] = $this->Page_model->get_pages_layout();
+        
 
         // Process the form
         $this->load->library('form_validation');
@@ -54,7 +56,7 @@ class Pages extends MY_Controller
         // Will produce $_SESSION['error'] is something happen
         if (isset($_FILES['image']) && $_FILES['image']['name'] != '')
         {
-            if ($file = $this->Service_model->do_upload($this->Service_model->upload_path, 'image')) {
+            if ($file = $this->Page_model->do_upload($this->Page_model->upload_path, 'image')) {
                 $data['image'] = substr($file['full_path'], strpos($file['full_path'], 'assets'));
             }
         }
@@ -71,12 +73,14 @@ class Pages extends MY_Controller
             }
 
             $data['name'] = addToJson($this->input->post('ar_name'), $this->input->post('en_name'));
-            $data['content'] = addToJson($this->input->post('ar_description'), $this->input->post('en_description'));
+            $data['content'] = addToJson($this->input->post('ar_content'), $this->input->post('en_content'));
             $data['slug'] = addToJson(make_slug($this->input->post('en_name')), make_slug($this->input->post('ar_name'), 'ar'));
             $data['meta_keywords'] = trim($this->input->post('meta_keywords'));
             $data['meta_description'] = trim($this->input->post('meta_description'));
             $data['meta_title'] = trim($this->input->post('meta_title'));
-            $this->Service_model->save($data, $id);
+            $data['status'] = trim($this->input->post('status'));
+            $data['page_layout'] = $this->input->post('page_layout');
+            $this->Page_model->save($data, $id);
             $_SESSION['success'] = $id ? lang('scucess_edit') : lang('success_add');
             $this->session->mark_as_flash('success');
             redirect('pages/all');
@@ -89,4 +93,14 @@ class Pages extends MY_Controller
     {
         $this->add($id);
     }
+
+
+    public function delete($id = null) 
+  {
+      $id && is_numeric($id) || redirect('pages/all');
+      $this->Page_model->delete($id);
+      $_SESSION['success_toastr'] = lang('success_delete');
+      $this->session->mark_as_flash('success_toastr');
+      redirect('pages/all');
+  }
 }

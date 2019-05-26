@@ -85,8 +85,8 @@ class Page_model extends MY_Model
             $sub_array[] = transText($row->name, 'en');
             $sub_array[] = transText($row->name, 'ar');
             $sub_array[] = $row->layout;
-            $sub_array[] = ($row->image) ? '<img src="'.site_url($row->image).'" width="80px" height="60px">' : '';
             $sub_array[] = $row->status == '1' ? 'Active' : 'Not Active';
+            $sub_array[] = ($row->image) ? '<img src="'.site_url($row->image).'" width="80px" height="60px">' : '';
             $sub_array[] = dateFormat($row->created_at);
             $sub_array[] = draw_actions_button(site_url('pages/edit/' . $row->id), site_url('pages/delete/'.$row->id), 'pages');
             $data[] = $sub_array;
@@ -110,5 +110,16 @@ class Page_model extends MY_Model
         $query = "SELECT * FROM pages";
         $q = $this->db->query($query);
         return $q->num_rows();
+    }
+
+
+    public function get_pages_layout()
+    {
+        $q = $this->db->get('pages_layout');
+        if ($q->num_rows()) {
+            return $q->result();
+        }
+        return false;
+        
     }
 }

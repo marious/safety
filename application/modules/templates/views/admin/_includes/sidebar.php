@@ -53,6 +53,24 @@
               </ul>
           </li>
 
+
+          <?php if (in_array('show_pages', $logged_in_user_permissions)): ?>
+              <li class="treeview <?= is_sidebar_menu_active('pages') ?>">
+                  <a href="#">
+                      <i class="fa fa-list-alt"></i> <span><?= lang('pages'); ?></span>
+                      <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li class="<?= is_tree_sidebar_menu_active('pages', 'all'); ?>"><a href="<?= site_url('pages/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_pages'); ?></a></li>
+                      <?php if(in_array('add_pages', $logged_in_user_permissions)): ?>
+                          <li class="<?= is_tree_sidebar_menu_active('pages', 'add'); ?>"><a href="<?= site_url('pages/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+                      <?php endif; ?>
+                  </ul>
+              </li>
+          <?php endif; ?>
+
           <!-- <li class="header">MAIN NAVIGATION</li> -->
         <?php if (in_array('show_services', $logged_in_user_permissions)): ?>
         <li class="treeview <?= is_sidebar_menu_active('services'); ?>">
@@ -72,22 +90,7 @@
 <?php endif; ?>
 
 
-          <?php if (in_array('show_pages', $logged_in_user_permissions)): ?>
-              <li class="treeview <?= is_sidebar_menu_active('pages') ?>">
-                  <a href="#">
-                      <i class="fa fa-list-alt"></i> <span><?= lang('pages'); ?></span>
-                      <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li class="<?= is_tree_sidebar_menu_active('pages', 'all'); ?>"><a href="<?= site_url('pages/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_pages'); ?></a></li>
-                      <?php if(in_array('add_pages', $logged_in_user_permissions)): ?>
-                          <li class="<?= is_tree_sidebar_menu_active('pages', 'add'); ?>"><a href="<?= site_url('pages/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
-                      <?php endif; ?>
-                  </ul>
-              </li>
-          <?php endif; ?>
+         
 
 <?php if (in_array('show_categories', $logged_in_user_permissions)): ?>
       <li class="treeview <?= is_sidebar_menu_active('categories') ?>">

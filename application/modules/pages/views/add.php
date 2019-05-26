@@ -27,20 +27,18 @@
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label"><?= lang('page_layout') ?> </label>
                         <div class="col-sm-2">
-                            <select class="form-control select2 select2-hidden-accessible" name="page_layout" style="width:300px;" onchange="showContentInputArea(this)" tabindex="-1" aria-hidden="true">
-                                <option value="Full Width Page Layout">Full Width Page Layout</option>
-                                <option value="FAQ Page Layout">FAQ Page Layout</option>
-                                <option value="Team Member Page Layout">Team Member Page Layout</option>
-                                <option value="Photo Gallery Page Layout">Photo Gallery Page Layout</option>
-                                <option value="Video Gallery Page Layout">Video Gallery Page Layout</option>
-                                <option value="Blog Page Layout">Blog Page Layout</option>
-                                <option value="Contact Us Page Layout">Contact Us Page Layout</option>
-                            </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 300px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-page_layout-is-container"><span class="select2-selection__rendered" id="select2-page_layout-is-container" title="Full Width Page Layout">Full Width Page Layout</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            <select class="form-control select2" name="page_layout" style="width:300px;" onchange="showContentInputArea(this)" >
+                                <?php if (is_array($pages_layout) && count($pages_layout)): ?>
+                                <?php foreach ($pages_layout as $page_layout): ?>
+                                <option value="<?= $page_layout->id; ?>"><?= $page_layout->layout; ?></option>
+<?php endforeach; ?>
+<?php endif; ?>
+                            </select>
                         </div>
                     </div>
 
                     <!-- en content -->
-                    <div class="form-group">
+                    <div class="form-group page-content">
                         <label for="en_content" class="col-sm-2 control-label"><?= lang('en_content') ?> <span class="error">*</span></label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="en_content" id="editor1"><?php echo set_value('en_content', transText($page->content, 'en')); ?></textarea>
@@ -49,7 +47,7 @@
                     </div>
 
                     <!-- ar content -->
-                    <div class="form-group">
+                    <div class="form-group page-content">
                         <label for="ar_content" class="col-sm-2 control-label"><?= lang('ar_content') ?> <span class="error">*</span></label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="ar_content" id="editor2"><?php echo set_value('ar_content', transText($page->content, 'ar')); ?></textarea>
@@ -62,19 +60,19 @@
                         <label for="" class="col-sm-2 control-label">Active? </label>
                         <div class="col-sm-6">
                             <label class="radio-inline">
-                                <input type="radio" name="status" value="1" checked="">Yes
+                                <input type="radio" name="status" value="1" <?= set_radio('status', '1', true) ?> <?php if ($page->status == '1') echo 'checked'; ?>>Yes
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="status" value="0">No
+                                <input type="radio" name="status" value="0" <?= set_radio('status', '0') ?> <?php if($page->status == '0') echo 'checked'; ?>>No
                             </label>
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="" class="col-sm-2 control-label"><?= lang('banner_image') ?> <span>*</span></label>
+                        <label for="" class="col-sm-2 control-label"><?= lang('image') ?> <span>*</span></label>
                         <div class="col-sm-9" style="padding-top:5px">
-                            <input type="file" name="banner">(Only jpg, jpeg, gif and png are allowed)
+                            <input type="file" name="image">(Only jpg, jpeg, gif and png are allowed)
                         </div>
                     </div>
                     <h3 class="seo-info"><?= lang('seo_info'); ?></h3>

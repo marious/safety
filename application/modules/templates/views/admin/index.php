@@ -93,6 +93,7 @@
 <script src="<?= base_url() . '/assets/admin/'; ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?= base_url() . '/assets/admin/'; ?>bower_components/fastclick/lib/fastclick.js"></script>
+<script src="<?= base_url() . 'assets/admin/'?>bower_components/select2/dist/js/select2.min.js"></script>
 <script src="<?= base_url() . '/assets/admin/'; ?>bower_components/toastr/toastr.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url() . '/assets/admin/'; ?>dist/js/adminlte.min.js"></script>
@@ -101,6 +102,15 @@
   $('#confirm-delete').on('show.bs.modal', function(e) {
     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
   });
+  $('.select2').select2()
+
+  function showContentInputArea(elem) {
+    if (elem.value == '1') {
+      $('.page-content').show();
+    } else {
+      $('.page-content').hide();
+    }
+  }
 </script>
 
 <?php if (isset($js_file)): ?>
