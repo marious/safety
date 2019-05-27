@@ -54,6 +54,11 @@
           </li>
 
 
+          <?php if (in_array('menu', $logged_in_user_permissions)): ?>
+          <li><a href="<?= site_url('menu') ?>"><i class="fa fa-list"></i> <?= lang('menu_management') ?></a></li>
+<?php endif; ?>
+
+
           <?php if (in_array('show_pages', $logged_in_user_permissions)): ?>
               <li class="treeview <?= is_sidebar_menu_active('pages') ?>">
                   <a href="#">

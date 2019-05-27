@@ -12,7 +12,11 @@ class Templates extends MY_Controller
 
     public function public_temp($data) 
     {
-        $this->load->view('public/index', $data);
+        $theme = setting('theme');
+        if ($theme == '') {
+            $theme = 'default';
+        }
+        $this->load->view('front/' . $theme . '/index', $data);
     }
 
 

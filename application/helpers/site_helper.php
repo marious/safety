@@ -30,6 +30,7 @@ function setting($setting_name = null) {
     $query = $CI->db->get_where('settings', ['name' => $setting_name]);
     return $query->row() ? $query->row()->value : '';
   }
+  return '';
 }
 
 
@@ -135,4 +136,11 @@ function get_current_lang()
     }
 
     return $lang;
+}
+
+
+function make_trans($column) {
+    $lang = get_current_lang();
+    $text_trans = $column . '_' . $lang;
+    return $text_trans;
 }

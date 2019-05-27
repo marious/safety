@@ -54,3 +54,4 @@ $lang['all_news'] = 'All News';
 $lang['news'] = 'News';
 $lang['pages'] = 'Pages';
 $lang['all_pages'] = 'All Pages';
+$lang['menu_management'] = 'Menu Management';

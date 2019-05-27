@@ -1,0 +1,124 @@
+.title {
+  color: #0f4680;
+}
+
+#wrapper {
+  width: 100%;
+}
+
+#header {
+  width: 100%;
+}
+
+.header-section-1 {
+  width: 100%;
+  background: #d3d3d3;
+}
+
+.header-section-1 .left-box {
+  float: left;
+  padding: 14px 0;
+}
+
+.header-section-1 .left-box span.title a {
+  text-transform: uppercase;
+  font: 400 14px/14px 'Open Sans', sans-serif;
+  padding-right: 10px;
+  color: #999;
+  font-weight: bold;
+}
+
+.header-social {
+  float: right;
+}
+
+.header-social ul {
+  float: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-social ul li {
+  float: left;
+  text-align: center;
+  border-left: 1px solid #666;
+}
+
+.header-social ul li a {
+  text-align: center;
+  padding: 14px;
+  display: block;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #999;
+  transition: all 0.2s ease-in;
+}
+
+.header-social ul li a:hover {
+  background: #fff;
+}
+
+.header-social .title {
+  font: 400 14px/40px 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  float: left;
+  padding-right: 10px;
+  padding-top: 6px;
+}
+
+/* logo row */
+.logo-row {
+  float: left;
+  width: 100%;
+  padding: 27px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+span.logo {
+  float: left;
+  margin: 7px 0 0 0;
+}
+
+span.logo img {
+  max-width:65%;
+}
+
+.dial-box {
+  float: right;
+  border-radius: 3px;
+  background-color: #222;
+  width: 230px;
+  padding: 0 0 0 15px;
+}
+
+.dial-box span {
+  color: #d7d7d7;
+  font: 500 14px/18px 'Open Sans', sans-serif;
+  float: left;
+  padding: 13px 0;
+}
+.dial-box span.phone-number {
+  padding: 13px 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.email-box {
+  float: right;
+  margin: 10px 15px 0 0;
+}
+
+.email-box span {
+  display: inline-block;
+  font: 400 14px/14px 'Open Sans', sans-serif;
+  color: #777;
+  padding: 0 0 5px 0;
+}
+
+.email-box a {
+  text-decoration: none;
+  display: inline-block;
+  font: 500 16px/16px 'Open Sans', sans-serif;
+}
+

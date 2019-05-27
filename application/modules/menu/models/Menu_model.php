@@ -11,6 +11,9 @@ class Menu_model extends MY_Model
     {
         $data= [];
         $menu = $this->get_nested_menu(0, $position, $active);
+        
+        if (!$menu) {return $data;}
+        
 
         foreach ($menu as $row) {
           $child_level = [];
@@ -22,7 +25,7 @@ class Menu_model extends MY_Model
             foreach ($menu2 as $row2) {
               $menu2 = [
                 'id'          => $row2->id,
-                'module'      => $row2->module,
+                'page'      => $row2->page,
                 'menu_type'   => $row2->menu_type,
                 'url'         => $row2->url,
                 'menu_name'   => $row2->menu_name,
@@ -37,7 +40,7 @@ class Menu_model extends MY_Model
                 foreach ($menu3 as $row3) {
                   $menu3 = [
                     'id'          => $row3->id,
-                    'module'      => $row3->module,
+                    'page'      => $row3->page,
                     'menu_type'   => $row3->menu_type,
                     'url'         => $row3->url,
                     'menu_name'   => $row3->menu_name,
@@ -60,7 +63,7 @@ class Menu_model extends MY_Model
 
           $level = [
 						'id'		      => $row->id,
-						'module'		  => $row->module,
+						'page'		  => $row->page,
 						'menu_type'		=> $row->menu_type,
 						'url'			    => $row->url,						
 						'menu_name'		=> $row->menu_name,
