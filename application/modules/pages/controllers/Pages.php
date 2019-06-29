@@ -5,7 +5,7 @@ class Pages extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->middleware->execute_middlewares(['not_authinticated']);
+        $this->middleware->only(['not_authinticated'], ['all', 'add', 'edit', 'delete']);
         $this->middleware->only(['check_permission:show_pages'], ['all']);
         $this->middleware->only(['check_permission:add_pages'], ['add']);
         $this->middleware->only(['check_permission:edit_pages'], ['edit']);

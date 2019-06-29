@@ -58,6 +58,7 @@ function make_slug($title, $lang = 'en')
 {
     return $lang == 'ar' ? preg_replace('/[^\x{0600}-\x{06FF}0-9-]+/u', '-', $title) :
         strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $title));
+    
 }
 
 function transText($dataField , $lang = null)

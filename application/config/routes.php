@@ -52,3 +52,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'page';
 $route['404_override'] = 'page';
 $route['translate_uri_dashes'] = FALSE;
+$route['news/item/(:any)'] = 'news/item/$1';

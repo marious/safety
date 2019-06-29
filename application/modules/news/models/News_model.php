@@ -27,6 +27,21 @@ class News_model extends MY_Model
         ],
     ];
 
+
+
+    public function get_news_with_limit($order_by = 'created_at', $sort = 'DESC', $limit = null, $offset = 0)
+    {
+        $this->db->select('news.*');
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+        if ($order_by) {
+            $this->db->order_by($order_by, $sort);
+        }
+        return parent::get();
+    }
+
+
     public function get_all_news()
     {
         // for ordering
@@ -119,4 +134,43 @@ class News_model extends MY_Model
         $q = $this->db->get('news');
         return $q->result();
     }
+
+
+
+
+    public function get_news_by_slug($slug)
+    {
+        $slugs = $this->get_all_slugs();
+        if (array_key_exists($slug, $slugs))
+        {
+            $news_id = $slugs[$slug];
+        } else {
+            return false;
+        }
+    
+        if ($news_id && is_numeric($news_id))
+        {
+            return $this->get($news_id, true);
+        }
+        return false;
+    }
+
+
+    public function get_all_slugs()
+    {
+        $this->db->select('*');
+        $this->db->from('news');
+        $q = $this->db->get();
+        $result = $q->result();
+
+        $data = [];
+        foreach ($result as $row) {
+            $data[transText($row->slug, 'en')] = $row->id;
+            $data[transText($row->slug, 'ar')] = $row->id;
+        }
+
+        return $data;
+    }
+
+
 }

@@ -1,5 +1,7 @@
 <?php require('_includes/head.php'); ?>
 
+<div calss="wrapper-content">
+
 <div id="wrapper">
   <?php require('_includes/header.php'); ?>
 
@@ -7,11 +9,13 @@
 
 <div class="clearfix"></div>
 
+
 <?php
 if (isset($view_file)) {
     $this->load->view($view_module . '/' . $view_file);
 }
 ?>
+</div>
 
 
 <footer>

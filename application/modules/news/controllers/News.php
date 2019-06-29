@@ -15,6 +15,26 @@ class News extends MY_Controller
     }
 
 
+
+    public function item($slug = false)
+    {
+        if ($slug) 
+        {
+            $news = $this->News_model->get_news_by_slug($slug);
+            if ($news) 
+            {
+                $this->data['news'] = $news;
+                $this->public_template('news_item', $this->data);
+            }
+            else 
+            {
+                redirect('page/news');
+
+            }
+        }
+    }
+
+
     public function get_latest()
     {
         return $this->News_model->get_latest_news();
