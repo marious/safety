@@ -5,7 +5,7 @@ class Categories extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->middleware->execute_middlewares(['not_authinticated']);
+        $this->middleware->only(['not_authinticated'], ['all', 'add', 'edit', 'delete']);
         $this->middleware->only(['check_permission:show_categories'], ['all']);
         $this->middleware->only(['check_permission:add_categories'], ['add']);
         $this->middleware->only(['check_permission:edit_categories'], ['edit']);
@@ -14,6 +14,11 @@ class Categories extends MY_Controller
         $this->load->model('Category_model');
     }
 
+
+    public function get_all()
+    {
+      return $this->Category_model->get();
+    }
 
 
 

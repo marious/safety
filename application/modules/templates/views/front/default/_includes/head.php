@@ -8,9 +8,23 @@
   <meta name="keywords" content="<?php echo isset($meta_keywords) ? $meta_keywords : setting(make_trans('meta_keywords')); ?>">
   <title>Document</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= site_url('assets/css/animate.css') ?>">
   <link rel="stylesheet" href="<?= site_url('assets/css/colors.css'); ?>">
+
+  <?php if (isset($css_file)): ?>
+  <?php if (is_array($css_file)): ?>
+  <?php foreach ($css_file as $file): ?>
+  <link rel="stylesheet" href="<?= $file; ?>">
+  <?php endforeach; ?>
+  <?php else: ?>
+  <link rel="stylesheet" href="<?= $css_file; ?>">
+  <?php endif; ?>
+  <?php endif; ?>
+  
+
+
   <?php if (get_current_lang() == 'en') : ?>
-  <link rel="stylesheet" href="<?= site_url('assets/css/custom_en.css') ?>">
+  <link rel="stylesheet" href="<?php echo site_url('assets/css/custom.css?v=') . filemtime(FCPATH . '/assets/css/custom.css')?>">
   <?php endif; ?>
   <?php if (get_current_lang() == 'ar'): ?>
   <link rel="stylesheet" href="https://cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">

@@ -25,22 +25,85 @@
       </div>
     </div><!-- ./container -->
   </section>
-</header>
 
-<!-- logo row -->
-<section class="logo-row">
-  <div class="container">
-    <span class="logo">
-      <a href=""></a>
-      <img src="<?= site_url(setting('logo')); ?>" alt="Logo Image">
-    </span>
-    <div class="dial-box">
-      <span><i class="fa fa-phone"></i> <?=lang('call_us')?>:</span>
-      <span class="phone-number"><?= setting('contact_phone') ?> </span>
-    </div>
-    <div class="email-box">
-      <span><?=lang('email_us');?>: </span>
-      <a href="mailto:<?=setting('contact_email')?>"><?=setting('contact_email')?></a>
-    </div>
-  </div><!-- ./container -->
-</section>
+  <!-- logo row -->
+  <section class="logo-row">
+    <div class="container">
+      <span class="logo">
+        <a href=""></a>
+        <img src="<?= site_url(setting('logo')); ?>" alt="Logo Image">
+      </span>
+      <div class="dial-box">
+        <span><i class="fa fa-phone"></i> <?=lang('call_us')?>:</span>
+        <span class="phone-number"><?= setting('contact_phone') ?> </span>
+      </div>
+      <div class="email-box">
+        <span><?=lang('email_us');?>: </span>
+        <a href="mailto:<?=setting('contact_email')?>"><?=setting('contact_email')?></a>
+      </div>
+    </div><!-- ./container -->
+  </section>
+
+  <!-- Navigation -->
+  <div class="clearfix"></div>
+
+  <section class="navigation-row">
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right" id="nav">
+            <li class="active">
+              <a href="http://localhost/safety">Home</a>
+            </li>
+            <?php if (is_array($menus) && count($menus)): ?>
+            <?php foreach ($menus as $menu): ?>
+            <li>
+              <a href=""><?= $menu['menu_name'] ?>
+              <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+<?php endif; ?>
+              </a>
+              <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
+              <ul>
+              <?php foreach ($menu['childs'] as $menu2): ?>
+              <li><a href=""><?= $menu2['menu_name'] ?>
+                <?php if (is_array($menu2['childs']) && count($menu2['childs'])): ?>
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+<?php endif; ?>
+                </a>
+                <?php if (is_array($menu2['childs']) && count($menu2['childs'])): ?>
+                <ul>
+                  <?php foreach ($menu2['childs'] as $menu3): ?>
+                  <li><a href=""><?= $menu3['menu_name'] ?></a></li>
+<?php endforeach; ?>
+                </ul>
+<?php endif; ?>
+              </li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
+            </li>
+<?php endforeach; ?>
+<?php endif; ?>
+
+
+            
+           
+            
+         
+       
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+</header>

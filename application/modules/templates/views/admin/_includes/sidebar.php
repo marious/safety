@@ -23,36 +23,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
 
-      <?php if (in_array('show_users', $logged_in_user_permissions)): ?>
-          <li class="treeview <?= is_sidebar_menu_active('users'); ?>">
-              <a href="#"><i class="fa fa-user"></i> <span><?= lang('users') ?></span>
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-            <ul class="treeview-menu">
-                <li class="<?= is_tree_sidebar_menu_active('users', 'all'); ?>"><a href="<?= site_url('users/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_users'); ?></a></li>
-<?php if (in_array('add_users', $logged_in_user_permissions)): ?>
-                <li class="<?= is_tree_sidebar_menu_active('users', 'add'); ?>"><a href="<?= site_url('users/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
-<?php endif; ?>
-            </ul>
-          </li>
-<?php endif; ?>
-
-
-
-          <li class="treeview <?= is_sidebar_menu_active('roles'); ?>">
-              <a href="#"><i class="fa fa-key"></i> <span><?= lang('roles_and_permissions') ?></span>
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li class="<?= is_tree_sidebar_menu_active('roles', 'all'); ?>"><a href="<?= site_url('roles/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_roles'); ?></a></li>
-                  <li class="<?= is_tree_sidebar_menu_active('roles', 'add'); ?>"><a href="<?= site_url('roles/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
-              </ul>
-          </li>
-
+      
 
           <?php if (in_array('menu', $logged_in_user_permissions)): ?>
           <li><a href="<?= site_url('menu') ?>"><i class="fa fa-list"></i> <?= lang('menu_management') ?></a></li>
@@ -154,6 +125,28 @@
 
 
 
+          <?php if (in_array('show_slider', $logged_in_user_permissions)): ?>
+              <li class="treeview <?= is_sidebar_menu_active('slider'); ?>">
+                  <a href="#">
+                      <i class="fa fa-file-image-o"></i> <span><?= lang('slider'); ?></span>
+                      <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li class="<?= is_tree_sidebar_menu_active('slider', 'all'); ?>"><a href="<?= site_url('slider/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_sliders'); ?></a></li>
+                      <?php if(in_array('add_slider', $logged_in_user_permissions)): ?>
+                          <li class="<?= is_tree_sidebar_menu_active('slider', 'add'); ?>"><a href="<?= site_url('slider/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+                      <?php endif; ?>
+                  </ul>
+              </li>
+          <?php endif; ?>
+
+
+
+
+
+
           <?php if (in_array('show_clients', $logged_in_user_permissions)): ?>
               <li class="treeview <?= is_sidebar_menu_active('clients'); ?>">
                   <a href="#">
@@ -170,6 +163,37 @@
                   </ul>
               </li>
           <?php endif; ?>
+
+
+          <?php if (in_array('show_users', $logged_in_user_permissions)): ?>
+          <li class="treeview <?= is_sidebar_menu_active('users'); ?>">
+              <a href="#"><i class="fa fa-user"></i> <span><?= lang('users') ?></span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+                <li class="<?= is_tree_sidebar_menu_active('users', 'all'); ?>"><a href="<?= site_url('users/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_users'); ?></a></li>
+<?php if (in_array('add_users', $logged_in_user_permissions)): ?>
+                <li class="<?= is_tree_sidebar_menu_active('users', 'add'); ?>"><a href="<?= site_url('users/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+<?php endif; ?>
+            </ul>
+          </li>
+<?php endif; ?>
+
+
+
+          <li class="treeview <?= is_sidebar_menu_active('roles'); ?>">
+              <a href="#"><i class="fa fa-key"></i> <span><?= lang('roles_and_permissions') ?></span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li class="<?= is_tree_sidebar_menu_active('roles', 'all'); ?>"><a href="<?= site_url('roles/all'); ?>"><i class="fa fa-circle-o"></i> <?= lang('all_roles'); ?></a></li>
+                  <li class="<?= is_tree_sidebar_menu_active('roles', 'add'); ?>"><a href="<?= site_url('roles/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_new'); ?></a></li>
+              </ul>
+          </li>
 
 
 
