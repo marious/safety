@@ -60,3 +60,4 @@ $lang['yes'] = 'Yes';
 $lang['no'] = 'No';
 $lang['slider'] = 'Slider';
 $lang['all_sliders'] = 'All Sliders';
+$lang['about_us'] = 'About Us';

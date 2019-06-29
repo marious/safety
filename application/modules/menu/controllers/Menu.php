@@ -9,6 +9,12 @@ class Menu extends MY_Controller
     }
 
 
+    public function get_menu()
+    {
+        return $this->Menu_model->get_menu();
+    }
+
+
     public function index()
     { 
         $this->data['page_header'] = 'Manage Menu';
@@ -142,5 +148,8 @@ class Menu extends MY_Controller
         $this->session->mark_as_flash('success_toastr');
         redirect('menu');
     }
+
+
+
 
 }

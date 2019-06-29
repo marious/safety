@@ -15,6 +15,12 @@ class News extends MY_Controller
     }
 
 
+    public function get_latest()
+    {
+        return $this->News_model->get_latest_news();
+    }
+
+
     public function all()
     {
         $this->data['css_file'] = [base_url(). '/assets/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'];

@@ -47,6 +47,10 @@
   <!-- Navigation -->
   <div class="clearfix"></div>
 
+    <?php
+    $menus = Modules::run('menu/get_menu');
+    ?>
+
   <section class="navigation-row">
     <nav class="navbar navbar-inverse">
       <div class="container">
@@ -61,12 +65,12 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right" id="nav">
             <li class="active">
-              <a href="http://localhost/safety">Home</a>
+              <a href="">Home</a>
             </li>
             <?php if (is_array($menus) && count($menus)): ?>
             <?php foreach ($menus as $menu): ?>
             <li>
-              <a href=""><?= $menu['menu_name'] ?>
+              <a href="<?= site_url('page/' . Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu['menu_name'] ?>
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
               <i class="fa fa-caret-down" aria-hidden="true"></i>
 <?php endif; ?>
@@ -74,7 +78,7 @@
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
               <ul>
               <?php foreach ($menu['childs'] as $menu2): ?>
-              <li><a href=""><?= $menu2['menu_name'] ?>
+              <li><a href="<?= site_url('page/'.Modules::run('pages/get_page_slug', $menu2['page'])) ?>"><?= $menu2['menu_name'] ?>
                 <?php if (is_array($menu2['childs']) && count($menu2['childs'])): ?>
               <i class="fa fa-caret-right" aria-hidden="true"></i>
 <?php endif; ?>
@@ -82,7 +86,7 @@
                 <?php if (is_array($menu2['childs']) && count($menu2['childs'])): ?>
                 <ul>
                   <?php foreach ($menu2['childs'] as $menu3): ?>
-                  <li><a href=""><?= $menu3['menu_name'] ?></a></li>
+                  <li><a href="<?= site_url('page/'.Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu3['menu_name'] ?></a></li>
 <?php endforeach; ?>
                 </ul>
 <?php endif; ?>

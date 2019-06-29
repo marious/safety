@@ -29,6 +29,12 @@ class Pages extends MY_Controller
         $this->Page_model->get_all_pages();
     }
 
+    public function get_page_slug($page_id)
+    {
+        $page = $this->Page_model->get($page_id, true);
+        return transText($page->slug, 'en');
+    }
+
     public function add($id= false)
     {
         $this->data['page_header'] = $id && is_numeric($id) ? '<i class="fa fa-arrow-circle-o-right"></i> '.lang('edit_service')  : '<i class="fa fa-arrow-circle-o-right"></i> '.lang('add_new_service');

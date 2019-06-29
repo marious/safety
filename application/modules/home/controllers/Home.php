@@ -14,7 +14,7 @@ class Home extends MY_Controller
     public function index()
     {
         
-        $this->load->module('menu');
+//        $this->load->module('menu');
         $this->load->module('slider');
         $this->data['css_file'] = ['https://cdn.jsdelivr.net/jquery.owlcarousel/1.31/owl.carousel.css', 
             site_url('assets/css/carousel.css')];
@@ -23,7 +23,7 @@ class Home extends MY_Controller
             ,
             site_url('assets/js/wow.js'),
             site_url('assets/js/carousel.js')];
-        $this->data['menus'] = $this->Menu_model->get_menu();
+//        $this->data['menus'] = $this->Menu_model->get_menu();
 
         $this->public_template('index', $this->data);
 

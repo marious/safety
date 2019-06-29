@@ -1,3 +1,6 @@
+body {
+	min-height: 100%;
+}
 .title {
   color: #0f4680;
 }
@@ -246,6 +249,15 @@ span.logo img {
 }
 
 
+.inner-banner {
+	width: 100%;
+	background: url('../images/inner-banner-img-1.jpg');
+	padding: 90px 0;
+	height: 250px;
+	color: #fff;
+}
+
+
 
 /* Services */
 .service-v1 {
@@ -465,10 +477,11 @@ span.logo img {
  * ---------------------------------------------------
  */
  .news-v1 {
-	background: #fff;
 	padding-top: 50px;
 	padding-bottom: 50px;
-}
+	 background-color: #f2f3f3;
+
+ }
 
 .news-v1 .heading {
 	margin-bottom: 50px;
@@ -558,6 +571,10 @@ span.logo img {
 	line-height: 1.4;
 }
 
+.news-v1 .item {
+	margin: 0 20px;
+}
+
 .news-v1 .item .thumb {
 	position: relative;
 	overflow: hidden;
@@ -609,4 +626,73 @@ span.logo img {
 	padding-left: 15px;
 	padding-right: 10px;
 	text-transform: uppercase;
+}
+
+
+/* Contact Section */
+section.contact {
+	padding: 50px 0;
+}
+.contact ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.contact .map-box iframe{
+	min-width: 100%;
+}
+
+.contact ul li {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	padding: 0 0 25px 0;
+}
+
+.contact ul li .fa {
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-size: 18px;
+	color: #0f4680;
+}
+
+.contact ul li .text-col {
+	overflow: hidden;
+	padding: 0 0 0 26px;
+}
+
+.contact ul li .text-col span {
+	color: #777;
+	padding: 0 0 10px 0;
+	display: block;
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.contact ul li .text-col strong {
+	display: block;
+	color: #222;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+/* footer */
+footer {
+	margin-top: 40px;
+	padding: 20px 0;
+	background-color: #f2f3f3;
+	clear: both;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+footer p {
+	color: #222;
+	padding-top: 10px;
+	text-align: center;
+	position: relative;
+
 }

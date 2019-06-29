@@ -110,4 +110,13 @@ class News_model extends MY_Model
         $q = $this->db->query($query);
         return $q->num_rows();
     }
+
+
+    public function get_latest_news()
+    {
+        $this->db->order_by('created_at', 'DESC');
+        $this->db->limit(6);
+        $q = $this->db->get('news');
+        return $q->result();
+    }
 }
