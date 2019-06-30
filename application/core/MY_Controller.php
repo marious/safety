@@ -24,6 +24,7 @@ class MY_Controller extends MX_Controller
         $this->data['logged_in_user_permissions'] = Modules::run('roles/get_active_user_permissions');
     }
 
+    $this->handle_front_lang();
   }
 
 
@@ -69,5 +70,25 @@ class MY_Controller extends MX_Controller
     }
 
 
+
+    public function handle_front_lang()
+    {
+        if (! isset($_COOKIE['front_lang']))
+        {
+           setcookie('front_lang', 'arabic', time() + (86400 * 100), '/');
+           $this->config->set_item('language', 'arabic');
+           return;
+        }
+
+        if (isset($_COOKIE['front_lang']) && !in_array($_COOKIE['front_lang'], array('english', 'arabic')) )
+        {
+            setcookie('front_lang', 'arabic', time() + (86400 * 100), '/');
+            $this->config->set_item('language', 'arabic');
+
+            return;
+        }
+
+        return;
+    }
 
 }

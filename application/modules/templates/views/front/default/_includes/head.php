@@ -23,10 +23,10 @@
   
 
 
-  <?php if (get_current_lang() == 'en') : ?>
+  <?php if (get_current_front_lang() == 'english') : ?>
   <link rel="stylesheet" href="<?php echo site_url('assets/css/custom.css?v=') . filemtime(FCPATH . '/assets/css/custom.css')?>">
   <?php endif; ?>
-  <?php if (get_current_lang() == 'ar'): ?>
+  <?php if (get_current_front_lang() == 'arabic'): ?>
   <link rel="stylesheet" href="https://cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
   <link rel="stylesheet" href="<?= site_url('assets/css/custom_ar.css') ?>">
   <?php endif; ?>

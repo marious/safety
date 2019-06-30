@@ -140,6 +140,12 @@ function get_current_lang()
 }
 
 
+function get_current_front_lang()
+{
+    return $_COOKIE['front_lang'];
+}
+
+
 function make_trans($column) {
     $lang = get_current_lang();
     $text_trans = $column . '_' . $lang;

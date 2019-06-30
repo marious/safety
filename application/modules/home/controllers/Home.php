@@ -26,7 +26,26 @@ class Home extends MY_Controller
 //        $this->data['menus'] = $this->Menu_model->get_menu();
 
         $this->public_template('index', $this->data);
+    }
 
+
+    public function lang($lang = false)
+    {
+        if ($lang && in_array($lang, ['ar', 'en']))
+        {
+            if ($lang == 'en') {
+                setcookie('front_lang', 'english', time() + (86400 * 100), '/');
+                $this->config->set_item('language', 'english');
+
+            } else if ($lang == 'ar') {
+                setcookie('front_lang', 'arabic', time() + (86400 * 100), '/');
+                $this->config->set_item('language', 'arabic');
+
+            }
+            redirect(site_url());
+        }
+
+        redirect(site_url());
     }
 
 }

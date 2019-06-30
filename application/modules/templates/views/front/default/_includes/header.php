@@ -3,12 +3,12 @@
     <div class="container">
       <div class="left-box">
         <span class="title">
-          <?php if (get_current_lang() == 'ar'): ?>
-          <a href=""> AR
+          <?php if (get_current_front_lang() == 'english'): ?>
+          <a href="<?= site_url('home/lang/ar') ?>"> AR
             <img src="<?= site_url('assets/images/country-flag-Egypt.png') ?>" alt="ar-lang">
           </a>
 <?php else: ?>
-  <a href="">EN
+  <a href="<?= site_url('home/lang/en') ?>">EN
   <img src="<?= site_url('assets/images/united-kingdom-flag-1-.png') ?>" alt="en-lang">
   </a>
 <?php endif; ?>
