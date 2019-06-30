@@ -127,4 +127,38 @@ class Category_model extends MY_Model
         return $q->num_rows();
     }
 
+
+    public function get_by_slug($slug)
+    {
+        $slugs = $this->get_all_slugs();
+        if (array_key_exists($slug, $slugs))
+        {
+            $category_id = $slugs[$slug];
+        } else {
+            return false;
+        }
+
+        if ($category_id && is_numeric($category_id))
+        {
+            return $this->get($category_id, true);
+        }
+        return false;
+    }
+
+    public function get_all_slugs()
+    {
+        $this->db->select('*');
+        $this->db->from('categories');
+        $q = $this->db->get();
+        $result = $q->result();
+
+        $data = [];
+        foreach ($result as $row) {
+            $data[transText($row->slug, 'en')] = $row->id;
+            $data[transText($row->slug, 'ar')] = $row->id;
+        }
+
+        return $data;
+    }
+
 }

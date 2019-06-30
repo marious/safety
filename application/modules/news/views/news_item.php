@@ -1,3 +1,9 @@
+<div class="inner-banner">
+    <div class="container">
+        <h1></h1>
+    </div>
+</div>
+
 <section class="blog">
   <div class="container">
     <div class="row">

@@ -1,6 +1,6 @@
 <div class="inner-banner">
     <div class="container">
-        <h1></h1>
+        <h1><?= lang('news') ?></h1>
     </div>
 </div>
 
@@ -59,13 +59,18 @@
 <div class="sidebar">
 
 	<div class="widget">
-				<h4>Categories</h4>
-		<ul>
-							<li><a href="http://localhost/consultine/category/commercial">Commercial</a></li>
-								<li><a href="http://localhost/consultine/category/economy">Economy</a></li>
-								<li><a href="http://localhost/consultine/category/residential">Residential</a></li>
-								<li><a href="http://localhost/consultine/category/tools-and-equipment">Tools and Equipment</a></li>
-						</ul>
+        <?php
+            $this->load->module('categories');
+            $categories = $this->categories->Category_model->get();
+        ?>
+				<h4><?= lang('categories') ?></h4>
+        <?php if (is_array($categories) && count($categories)): ?>
+            <ul>
+                <?php foreach ($categories as $category): ?>
+                    <li><a href="<?= site_url('categories/item/' . transText($category->slug, 'en')) ?>"><?= transText($category->name, 'en') ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
 	</div>
 
 </div>

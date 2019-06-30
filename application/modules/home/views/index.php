@@ -75,7 +75,7 @@ $sliders = Modules::run('slider/get_all');
                                     <div class="overlay"></div>
                                 </div>
                                 <div class="text">
-                                    <h3><a href="<?php echo site_url('categories/' . transText($category->slug, 'en')) ?>"><?php echo transText($category->name, 'en'); ?></a></h3>
+                                    <h3><a href="<?php echo site_url('categories/item/' . transText($category->slug, 'en')) ?>"><?php echo transText($category->name, 'en'); ?></a></h3>
                                     <p><?php echo shortDescrip(transText($category->description, 'en'), 10); ?></p>
                                 </div>
                             </div>

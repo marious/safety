@@ -5,7 +5,7 @@ class Clients extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->middleware->execute_middlewares(['not_authinticated']);
+        $this->middleware->only(['not_authinticated'], ['all', 'add', 'edit', 'delete']);
         $this->middleware->only(['check_permission:show_clients'], ['all']);
         $this->middleware->only(['check_permission:add_clients'], ['add']);
         $this->middleware->only(['check_permission:edit_clients'], ['edit']);

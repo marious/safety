@@ -5,7 +5,7 @@ class News extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->middleware->execute_middlewares(['not_authinticated']);
+        $this->middleware->only(['not_authinticated'], ['all', 'add', 'edit', 'delete']);
         $this->middleware->only(['check_permission:show_news'], ['all']);
         $this->middleware->only(['check_permission:add_news'], ['add']);
         $this->middleware->only(['check_permission:edit_news'], ['edit']);
@@ -13,7 +13,6 @@ class News extends MY_Controller
         $this->lang->load('news');
         $this->load->model('News_model');
     }
-
 
 
     public function item($slug = false)

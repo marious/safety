@@ -131,6 +131,8 @@ class Product_model extends MY_Model
 
 
 
+
+
     public function get_product_images($product_id)
     {
         $query = "SELECT * FROM product_images WHERE product_id = ? ";
@@ -176,6 +178,14 @@ class Product_model extends MY_Model
     }
 
 
+    public function product_images($id)
+    {
+        $query = "SELECT * FROM product_images WHERE product_id = ?";
+        $q = $this->db->query($query, [$id]);
+        return $q->result();
+    }
+
+
     public function save_image_for_product($id = false, $image = false)
     {
         if ($id && $image)
@@ -188,4 +198,39 @@ class Product_model extends MY_Model
             return $this->db->insert('product_images', $data);
         }
     }
+
+
+    public function get_by_slug($slug)
+    {
+        $slugs = $this->get_all_slugs();
+        if (array_key_exists($slug, $slugs))
+        {
+            $product_id = $slugs[$slug];
+        } else {
+            return false;
+        }
+
+        if ($product_id && is_numeric($product_id))
+        {
+            return $this->get($product_id, true);
+        }
+        return false;
+    }
+
+    public function get_all_slugs()
+    {
+        $this->db->select('*');
+        $this->db->from('products');
+        $q = $this->db->get();
+        $result = $q->result();
+
+        $data = [];
+        foreach ($result as $row) {
+            $data[transText($row->slug, 'en')] = $row->id;
+            $data[transText($row->slug, 'ar')] = $row->id;
+        }
+
+        return $data;
+    }
+
 }

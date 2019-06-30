@@ -12,6 +12,7 @@ class Page extends MY_Controller
     public function index()
     {
         $slug = $this->uri->segment(2);
+
         if ($this->Page_m->slug_exist($slug))
         {
             $page = $this->Page_m->get_page_slug($slug);
@@ -74,9 +75,20 @@ class Page extends MY_Controller
 
 
 
-    protected function view_news_item($slug)
+    private function clients()
     {
-        var_dump($slug);
+        $this->load->module('clients');
+        $this->data['css_file'] = [site_url('assets/css/prettyphoto.css')];
+        $this->data['js_file'] = [site_url('assets/js/prettyphoto.js')];
+        $this->data['clients'] = $this->clients->Client_model->get();
+        $this->public_template('clients', $this->data);
+    }
+
+
+
+    public function contact_us()
+    {
+        $this->public_template('contact_us', $this->data);
     }
 
 }

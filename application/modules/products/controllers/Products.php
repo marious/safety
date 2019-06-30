@@ -6,7 +6,7 @@ class Products extends MY_Controller
     {
         parent::__construct();
         parent::__construct();
-        $this->middleware->execute_middlewares(['not_authinticated']);
+        $this->middleware->only(['not_authinticated'], ['all', 'add', 'edit', 'delete']);
         $this->middleware->only(['check_permission:show_products'], ['all']);
         $this->middleware->only(['check_permission:add_products'], ['add']);
         $this->middleware->only(['check_permission:edit_products'], ['edit']);

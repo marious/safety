@@ -1,6 +1,8 @@
-new WOW().init();
+if ($('.wow').length) {
+    new WOW().init();
+}
 
-if ($('.categories-carousel')) {
+if ($('.categories-carousel').length) {
   $('.categories-carousel, .news-carousel').owlCarousel({
     autoplay: 4000,
     items: 3,
@@ -9,3 +11,18 @@ if ($('.categories-carousel')) {
   });
 }
 
+$('a[data-rel]').each(function() {
+        $(this).attr('rel', $(this).data('rel'));
+        $(".pretty-gallery a[rel^='prettyPhoto']").prettyPhoto();
+    }
+);
+if($('.gallery').length) {
+    $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto( {
+            animation_speed: 'normal', theme: 'light_square', slideshow: 3000, autoplay_slideshow: true
+        }
+    );
+    $(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto( {
+            animation_speed: 'fast', slideshow: 10000, hideflash: true
+        }
+    );
+}

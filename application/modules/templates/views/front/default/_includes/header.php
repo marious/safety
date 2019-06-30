@@ -65,7 +65,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right" id="nav">
             <li class="active">
-              <a href="">Home</a>
+              <a href="<?=site_url()?>">Home</a>
             </li>
             <?php if (is_array($menus) && count($menus)): ?>
             <?php foreach ($menus as $menu): ?>

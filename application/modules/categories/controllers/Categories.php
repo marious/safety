@@ -15,6 +15,52 @@ class Categories extends MY_Controller
     }
 
 
+    public function item($slug = false)
+    {
+        if ($slug)
+        {
+            $category = $this->Category_model->get_by_slug($slug);
+            if ($category)
+            {
+                $this->data['category'] = $category;
+                $this->public_template('item', $this->data);
+            }
+            else
+            {
+                redirect(site_url());
+            }
+        } else {
+            redirect(site_url());
+        }
+
+    }
+
+
+    public function product($slug = false)
+    {
+        if ($slug)
+        {
+            $this->load->module('products');
+            $product = $this->products->Product_model->get_by_slug($slug);
+            if ($product)
+            {
+                $this->data['product'] = $product;
+                $this->public_template('product', $this->data);
+            }
+            else
+            {
+                redirect(site_url());
+            }
+        }
+        else
+        {
+            redirect(site_url());
+        }
+    }
+
+
+
+
     public function get_all()
     {
       return $this->Category_model->get();
