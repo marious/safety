@@ -24,7 +24,17 @@ class MY_Controller extends MX_Controller
         $this->data['logged_in_user_permissions'] = Modules::run('roles/get_active_user_permissions');
     }
 
-    $this->handle_front_lang();
+
+    if (!isset($_SESSION['public_site_language']) || empty($_SESSION['public_site_language']))
+    {
+        $this->config->set_item('language', 'arabic');
+    }
+    else
+    {
+        $this->config->set_item('language', $_SESSION['public_site_language']);
+    }
+
+
   }
 
 
@@ -73,22 +83,23 @@ class MY_Controller extends MX_Controller
 
     public function handle_front_lang()
     {
-        if (! isset($_COOKIE['front_lang']))
-        {
-           setcookie('front_lang', 'arabic', time() + (86400 * 100), '/');
-           $this->config->set_item('language', 'arabic');
-           return;
-        }
+        // if (!isset($_SESSION['language']) || empty($_SESSION['language']))
+        // {
+        //     if (isset($_SESSION['user_language']) && !empty($_SESSION['user_language'])) {
+        //         $_SESSION['language'] = get_language($_SESSION['user_language']);
+        //         $this->config->set_item('language', $_SESSION['language']);
+        //     } else {
+        //         $this->config->set_item('language', 'arabic');
+        //     }
+        // }
+        // else
+        // {
+        //     if (isset($_SESSION['language']))
+        //     {
+        //         $this->config->set_item('language', $_SESSION['language']);
+        //     }
+        // }
 
-        if (isset($_COOKIE['front_lang']) && !in_array($_COOKIE['front_lang'], array('english', 'arabic')) )
-        {
-            setcookie('front_lang', 'arabic', time() + (86400 * 100), '/');
-            $this->config->set_item('language', 'arabic');
-
-            return;
-        }
-
-        return;
     }
 
 }

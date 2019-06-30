@@ -68,6 +68,8 @@
                     <fieldset style="min-height: 400px;">
                     <?php $menu_lang = isset($c_menu->menu_lang) && ($c_menu->menu_lang != '') ? json_decode($c_menu->menu_lang, true) : ''; ?>
 
+                    
+
                         <legend> Create / Update</legend>
 
                         <form action="<?= site_url('menu/save') ?>" method="post" class="form-horizontal">

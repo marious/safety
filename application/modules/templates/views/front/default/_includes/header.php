@@ -34,7 +34,7 @@
         <img src="<?= site_url(setting('logo')); ?>" alt="Logo Image">
       </span>
       <div class="dial-box">
-        <span><i class="fa fa-phone"></i> <?=lang('call_us')?>:</span>
+        <span class="contact-us"><i class="fa fa-phone"></i> <?=lang('call_us')?>:</span>
         <span class="phone-number"><?= setting('contact_phone') ?> </span>
       </div>
       <div class="email-box">
@@ -65,12 +65,21 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right" id="nav">
             <li class="active">
-              <a href="<?=site_url()?>">Home</a>
+              <a href="<?=site_url()?>"><?= lang('home') ?></a>
             </li>
             <?php if (is_array($menus) && count($menus)): ?>
             <?php foreach ($menus as $menu): ?>
+
+            <?php
+              if (isset($_SESSION['public_site_language']) && $_SESSION['public_site_language'] == 'english') {
+                $menu_lang = $menu['menu_name'];
+              } else {
+                $menu_lang = isset($menu['menu_lang']) && $menu['menu_lang'] != '' ? $menu['menu_lang']['title']['id'] : '';
+              }
+
+            ?>
             <li>
-              <a href="<?= site_url('page/' . Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu['menu_name'] ?>
+              <a href="<?= site_url('page/' . Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu_lang ?>
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
               <i class="fa fa-caret-down" aria-hidden="true"></i>
 <?php endif; ?>
@@ -78,7 +87,18 @@
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
               <ul>
               <?php foreach ($menu['childs'] as $menu2): ?>
-              <li><a href="<?= site_url('page/'.Modules::run('pages/get_page_slug', $menu2['page'])) ?>"><?= $menu2['menu_name'] ?>
+
+
+              <?php
+              if (isset($_SESSION['public_site_language']) && $_SESSION['public_site_language'] == 'english') {
+                $menu_lang_2 = $menu2['menu_name'];
+              } else {
+                $menu_lang_2 = isset($menu2['menu_lang']) && $menu2['menu_lang'] != '' ? $menu2['menu_lang']['title']['id'] : '';
+              }
+
+            ?>
+
+              <li><a href="<?= site_url('page/'.Modules::run('pages/get_page_slug', $menu2['page'])) ?>"><?= $menu_lang_2 ?>
                 <?php if (is_array($menu2['childs']) && count($menu2['childs'])): ?>
               <i class="fa fa-caret-right" aria-hidden="true"></i>
 <?php endif; ?>
@@ -86,7 +106,18 @@
                 <?php if (is_array($menu2['childs']) && count($menu2['childs'])): ?>
                 <ul>
                   <?php foreach ($menu2['childs'] as $menu3): ?>
-                  <li><a href="<?= site_url('page/'.Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu3['menu_name'] ?></a></li>
+
+                  <?php
+                  if (isset($_SESSION['public_site_language']) && $_SESSION['public_site_language'] == 'english') {
+                    $menu_lang_3 = $menu3['menu_name'];
+                  } else {
+                    $menu_lang_3 = isset($menu3['menu_lang']) && $menu3['menu_lang'] != '' ? $menu3['menu_lang']['title']['id'] : '';
+                  }
+
+              ?>
+
+
+                  <li><a href="<?= site_url('page/'.Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu_lang_3 ?></a></li>
 <?php endforeach; ?>
                 </ul>
 <?php endif; ?>

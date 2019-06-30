@@ -122,6 +122,11 @@ span.logo img {
     float: left;
     padding: 13px 0;
 }
+
+.dial-box .contact-us {
+    display: inline-block; float: right; margin-right: 15px;
+}
+
 .dial-box span.phone-number {
     padding: 13px 22px;
     font-weight: 700;
@@ -278,6 +283,13 @@ span.logo img {
     color: #fff;
 }
 
+#mainSlider {
+    direction: ltr;
+}
+.categories-v1,
+.news-carousel {
+    direction: ltr;
+}
 
 
 /* Services */

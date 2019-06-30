@@ -8,6 +8,8 @@ class Home extends MY_Controller
     {
         parent::__construct();
         $this->lang->load('home');
+        
+
     }
 
 
@@ -31,21 +33,17 @@ class Home extends MY_Controller
 
     public function lang($lang = false)
     {
-        if ($lang && in_array($lang, ['ar', 'en']))
+        if ($lang && in_array($lang, ['en', 'ar']))
         {
-            if ($lang == 'en') {
-                setcookie('front_lang', 'english', time() + (86400 * 100), '/');
-                $this->config->set_item('language', 'english');
-
+            if ($lang == 'en')
+            {
+                $lang = 'english';
             } else if ($lang == 'ar') {
-                setcookie('front_lang', 'arabic', time() + (86400 * 100), '/');
-                $this->config->set_item('language', 'arabic');
-
+                $lang = 'arabic';
             }
-            redirect(site_url());
+            $_SESSION['public_site_language'] = $lang;
         }
-
-        redirect(site_url());
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
 }

@@ -63,6 +63,9 @@ function make_slug($title, $lang = 'en')
 
 function transText($dataField , $lang = null)
 {
+    $languages = ['english' => 'en', 'arabic' => 'ar'];
+    $lang = get_current_front_lang();
+    $lang = $languages[$lang];
     if($dataField != '') {
         $text = json_decode($dataField);
         return $text->$lang;
@@ -142,7 +145,7 @@ function get_current_lang()
 
 function get_current_front_lang()
 {
-    return $_COOKIE['front_lang'];
+    return isset($_SESSION['public_site_language']) ? $_SESSION['public_site_language'] : 'arabic';
 }
 
 
