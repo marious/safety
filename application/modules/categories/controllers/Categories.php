@@ -17,6 +17,7 @@ class Categories extends MY_Controller
 
     public function item($slug = false)
     {
+        var_dump($slug);exit;
         if ($slug)
         {
             $slug = urldecode($slug);

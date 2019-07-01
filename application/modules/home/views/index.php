@@ -75,7 +75,7 @@ $sliders = Modules::run('slider/get_all');
                                     <div class="overlay"></div>
                                 </div>
                                 <div class="text">
-                                    <h3><a href="<?php echo site_url('categories/item/' .  safe_urlencode(transText($category->slug, get_current_front_lang())) ) ?>"><?php echo transText($category->name, get_current_front_lang()); ?></a></h3>
+                                    <h3><a href="<?php echo site_url('categories/item/' .  transText($category->slug, get_current_front_lang()) ) ?>"><?php echo transText($category->name, get_current_front_lang()); ?></a></h3>
                                     <p><?php echo shortDescrip(transText($category->description, get_current_front_lang()), 10); ?></p>
                                 </div>
                             </div>

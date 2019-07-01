@@ -196,6 +196,19 @@ function safe_urlencode($txt){
     $str = $txt;
     // $str = str_replace('.', '%2E', $str);
     // $str = str_replace('-', '%2D', $str);
-//    $str = iconv('utf-8','windows-1256', $str);
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $string = urlencode($str);
+
+        $string = str_replace("%C2%96", "-", $string);
+        $string = str_replace("%C2%91", "%27", $string);
+        $string = str_replace("%C2%92", "%27", $string);
+        $string = str_replace("%C2%82", "%27", $string);
+        $string = str_replace("%C2%93", "%22", $string);
+        $string = str_replace("%C2%94", "%22", $string);
+        $string = str_replace("%C2%84", "%22", $string);
+        $string = str_replace("%C2%8B", "%C2%AB", $string);
+        $string = str_replace("%C2%9B", "%C2%BB", $string);
+        return $string;
+    }
     return urlencode($str);
 }

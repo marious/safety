@@ -85,14 +85,13 @@
 
             ?>
             <li class="<?= $drowdown_class ?>">
-              <a href="<?= site_url('page/' . Modules::run('pages/get_page_slug', $menu['page'])) ?>" 
-                <?php if ($drowdown_class != '') {echo 'class="drodown-toggle" data-toggle="dropdown" aria-expended="false"';} ?>><?= $menu_lang ?>
+              <a href="<?= site_url('page/' . Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu_lang ?>
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
               <i class="fa fa-caret-down" aria-hidden="true"></i>
 <?php endif; ?>
               </a>
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
-              <ul class="dropdown-menu">
+              <ul>
               <?php foreach ($menu['childs'] as $menu2): ?>
 
 

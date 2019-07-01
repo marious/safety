@@ -1466,6 +1466,16 @@ footer p {
 }
 
 @media only screen and (max-width: 500px) {
+
+    span.logo img {
+        max-width: 50%;
+        float: left;
+    }
+
+    .header-section-1 {
+
+    }
+
     .navigation-row {
         float: none;
     }
@@ -1473,7 +1483,30 @@ footer p {
         display: block;
     }
 
-    #nav li:hover > ul {
-        display: none;;
+    #nav li > ul {
+        display: block;
+        padding-right: 0;
     }
+
+    #nav li ul li {
+    }
+
+    #nav li ul li a{
+        text-align: justify;
+        padding-right: 160px;
+    }
+
+    #mainSlider h1 {
+        font-size: 32px;
+    }
+    #mainSlider p {
+        font-size: 17px;
+        line-height: 120%;
+    }
+
+    #mainSlider .btn-large{
+        font-size: 16px;
+        padding: 15px 20px 20px;
+    }
+
 }
