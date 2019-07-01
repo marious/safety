@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'avenir';
+	src: url('../fonts/avenir.otf');
+}
 html {
 	position: relative;
 	min-height: 100%;
@@ -5,6 +9,7 @@ html {
 
 body {
 	margin: 0 0 100px 0;
+
 }
 
 .title {
@@ -587,8 +592,9 @@ span.logo img {
 .news-v1 .text p {
 	text-align: left;
 	margin-bottom: 0;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 1.4;
+	font-family: avenir;
 }
 
 .news-v1 .item {

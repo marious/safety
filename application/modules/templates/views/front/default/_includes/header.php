@@ -77,15 +77,22 @@
                 $menu_lang = isset($menu['menu_lang']) && $menu['menu_lang'] != '' ? $menu['menu_lang']['title']['id'] : '';
               }
 
+              $drowdown_class = '';
+
+              if (is_array($menu['childs']) && count($menu['childs'])) {
+                $drowdown_class="dropwdown";
+              }
+
             ?>
-            <li>
-              <a href="<?= site_url('page/' . Modules::run('pages/get_page_slug', $menu['page'])) ?>"><?= $menu_lang ?>
+            <li class="<?= $drowdown_class ?>">
+              <a href="<?= site_url('page/' . Modules::run('pages/get_page_slug', $menu['page'])) ?>" 
+                <?php if ($drowdown_class != '') {echo 'class="drodown-toggle" data-toggle="dropdown" aria-expended="false"';} ?>><?= $menu_lang ?>
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
               <i class="fa fa-caret-down" aria-hidden="true"></i>
 <?php endif; ?>
               </a>
               <?php if (is_array($menu['childs']) && count($menu['childs'])): ?>
-              <ul>
+              <ul class="dropdown-menu">
               <?php foreach ($menu['childs'] as $menu2): ?>
 
 

@@ -194,8 +194,8 @@ function get_caller_info() {
 function safe_urlencode($txt){
     //$str = urlencode($txt);
     $str = $txt;
-    $str = str_replace('.', '%2E', $str);
-    $str = str_replace('-', '%2D', $str);
+    // $str = str_replace('.', '%2E', $str);
+    // $str = str_replace('-', '%2D', $str);
 //    $str = iconv('utf-8','windows-1256', $str);
     return urlencode($str);
 }

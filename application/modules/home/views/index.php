@@ -160,7 +160,7 @@ $sliders = Modules::run('slider/get_all');
                                     <div class="photo" style="background-image:url(<?php echo site_url($row->image) ?>);"></div>
                                 </div>
                                 <div class="text">
-                                    <h3><a href="<?php echo site_url('news/' . transText($row->slug, get_current_front_lang())); ?>"><?php echo transText($row->name, get_current_front_lang()); ?></a></h3>
+                                    <h3><a href="<?php echo site_url('news/item/' . transText($row->slug, get_current_front_lang())); ?>"><?php echo transText($row->name, get_current_front_lang()); ?></a></h3>
                                     <p><?php echo shortDescrip(transText($row->description, get_current_front_lang()), 20) ?></p>
                                 </div>
                             </div>

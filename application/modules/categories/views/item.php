@@ -6,15 +6,15 @@
 
 <section class="campaigns-section">
     <div class="container">
-        <h2><?= transText($category->name, 'en') ?></h2>
+        <h2><?= transText($category->name, get_current_front_lang()) ?></h2>
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="detail-page">
-                        <img src="<?= site_url($category->image); ?>" alt="<?= transText($category->name, 'en') ?>" class="center-image">
+                        <img src="<?= site_url($category->image); ?>" alt="<?= transText($category->name, get_current_front_lang()) ?>" class="center-image">
 
                     <hr>
 
-                    <p><?= transText($category->description, 'en'); ?></p>
+                    <p><?= transText($category->description, get_current_front_lang()); ?></p>
 
                     <hr>
 
@@ -31,17 +31,17 @@
                             <div class="col-md-3 col-sm-6 arDir">
                                 <div class="box">
                                     <div class="frame">
-                                        <a href="<?= site_url('categories/product/' . transText($product->slug, 'en')) ?>">
+                                        <a href="<?= site_url('categories/product/' . transText($product->slug, get_current_front_lang())) ?>">
                                             <img src="<?= site_url($product->image) ?>" alt="img">
                                         </a>
                                     </div>
                                     <h3>
-                                        <a href="<?= site_url('categories/product/' . transText($product->slug, 'en')) ?>">
-                                            <?= transText($product->name, 'en') ?>
+                                        <a href="<?= site_url('categories/product/' . transText($product->slug, get_current_front_lang())) ?>">
+                                            <?= transText($product->name, get_current_front_lang()) ?>
                                         </a>
                                     </h3>
                                     <p>
-                                       <?= shortDescrip(transText($product->description, 'en'), 20) ?>
+                                       <?= shortDescrip(transText($product->description, get_current_front_lang()), 20) ?>
                                     </p>
                                 </div>
                             </div>

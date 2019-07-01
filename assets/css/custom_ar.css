@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'avenir';
+      src: url('../fonts/avenir.otf');
+  }
 html {
     position: relative;
     min-height: 100%;
@@ -5,6 +9,8 @@ html {
 
 body {
     margin: 0 0 100px 0;
+    font-family: avenir, sans-serif;
+    font-size: 16px;
 }
 
 .title {
@@ -46,7 +52,7 @@ ul {
 
 .header-section-1 .left-box span.title a {
     text-transform: uppercase;
-    font: 400 14px/14px 'Open Sans', sans-serif;
+    font: 400 14px/14px 'avenir', sans-serif;
     padding-right: 10px;
     color: #999;
     font-weight: bold;
@@ -84,7 +90,7 @@ ul {
 }
 
 .header-social .title {
-    font: 400 14px/40px 'Open Sans', sans-serif;
+    font: 400 14px/40px 'avenir', sans-serif;
     text-transform: uppercase;
     float: left;
     padding-right: 10px;
@@ -118,7 +124,7 @@ span.logo img {
 
 .dial-box span {
     color: #d7d7d7;
-    font: 500 14px/18px 'Open Sans', sans-serif;
+    font: 500 14px/18px 'avenir', sans-serif;
     float: left;
     padding: 13px 0;
 }
@@ -140,7 +146,7 @@ span.logo img {
 
 .email-box span {
     display: inline-block;
-    font: 400 14px/14px 'Open Sans', sans-serif;
+    font: 400 14px/14px 'avenir', sans-serif;
     color: #777;
     padding: 0 0 5px 0;
 }
@@ -148,7 +154,7 @@ span.logo img {
 .email-box a {
     text-decoration: none;
     display: inline-block;
-    font: 500 16px/16px 'Open Sans', sans-serif;
+    font: 500 16px/16px 'avenir', sans-serif;
 }
 
 /* Navigation */
@@ -194,7 +200,7 @@ span.logo img {
 }
 
 #nav li a {
-    font: 500 16px/16px 'Open Sans', sans-serif;
+    font: 500 18px/16px 'avenir', sans-serif;
     color: #222;
     text-decoration: none;
     padding: 20px 20px;
@@ -228,7 +234,7 @@ span.logo img {
 }
 
 #nav li ul {
-    position: absolute;
+    /* position: absolute;
     left: 0;
     top: 100%;
     width: 240px;
@@ -238,7 +244,7 @@ span.logo img {
     display: none;
     list-style: none;
     z-index: 10;
-    text-align: left;
+    text-align: left; */
 }
 
 #nav li:hover>ul {
@@ -266,7 +272,7 @@ span.logo img {
 
 #nav li ul li a {
     background: none;
-    font: 500 14px/14px 'Open Sans', sans-serif;
+    font: 500 14px/14px 'avenir', sans-serif;
     text-align: left;
     padding: 12px;
     display: block;
@@ -304,7 +310,7 @@ span.logo img {
 
 
 .service-v1 .heading h2 {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     font-size: 32px;
     text-align: center;
     font-weight: 700;
@@ -313,7 +319,7 @@ span.logo img {
 }
 
 .service-v1 .heading p {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     font-size: 18px;
     text-align: center;
     color: #333;
@@ -351,7 +357,7 @@ span.logo img {
 }
 
 .service-v1 .text h3 a {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     color: #0f4680;
     font-weight: 700;
     display: block;
@@ -397,7 +403,7 @@ span.logo img {
 }
 
 .categories-v1 .heading h2 {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     font-size: 32px;
     text-align: center;
     font-weight: 700;
@@ -406,7 +412,7 @@ span.logo img {
 }
 
 .categories-v1 .heading p {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     font-size: 18px;
     text-align: center;
     color: #333;
@@ -460,7 +466,7 @@ span.logo img {
 
 .categories-v1 .text h3 a {
     color: #fff;
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
 }
 
 .categories-v1 .text p {
@@ -521,7 +527,7 @@ span.logo img {
 }
 
 .news-v1 .heading h2 {
-    font-family: 'Roboto',sans-serif;
+    font-family: avenir,sans-serif;
     font-size: 32px;
     text-align: center;
     font-weight: 700;
@@ -530,7 +536,7 @@ span.logo img {
 }
 
 .news-v1 .heading p {
-    font-family: 'Roboto',sans-serif;
+    font-family: avenir,sans-serif;
     font-size: 18px;
     text-align: center;
     color: #333;
@@ -580,7 +586,7 @@ span.logo img {
 }
 
 .news-v1 .text h3 a {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     color: #0f4680;
     font-weight: 500;
 }
@@ -599,9 +605,10 @@ span.logo img {
 .news-v1 .text p {
     text-align: right;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
     direction: rtl;
+    font-family: avenir, sans-serif;
 }
 
 .news-v1 .item {
@@ -803,7 +810,7 @@ section.contact {
 }
 
 .blog .text-single h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     margin-top: 20px;
 }
 
@@ -812,7 +819,7 @@ section.contact {
 }
 
 .blog h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     text-align: left;
     color: #333;
     font-weight: 700;
@@ -824,7 +831,7 @@ section.contact {
 }
 
 .blog h3 a {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     color: #333;
 }
 
@@ -927,7 +934,7 @@ section.contact {
 }
 
 .blog p.button a {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     background: #656464;
     color: #fff;
     padding: 10px 14px;
@@ -1158,7 +1165,7 @@ section.contact {
 
 .contact-section label {
     display: block;
-    font: 500 16px/16px 'Open Sans', sans-serif;
+    font: 500 16px/16px 'avenir', sans-serif;
     padding: 0 0 10px 0;
 }
 
@@ -1175,7 +1182,7 @@ section.contact {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     margin-bottom: 30px;
-    font: 400 13px 'Open Sans', sans-serif;
+    font: 400 13px 'avenir', sans-serif;
     color: #999;
 }
 
@@ -1191,7 +1198,7 @@ section.contact {
     -webkit-box-sizing: border-box;
     margin-bottom: 30px;
     resize: none;
-    font: 400 13px 'Open Sans', sans-serif;
+    font: 400 13px 'avenir', sans-serif;
     color: #999;
 }
 
@@ -1201,7 +1208,7 @@ section.contact {
     height: 45px;
     border: 0;
     color: #fff;
-    font: 500 18px/18px 'Open Sans', sans-serif;
+    font: 500 18px/18px 'avenir', sans-serif;
 }
 
 .contact-section input[type="submit"]:hover {
@@ -1372,7 +1379,7 @@ section.contact {
 }
 
 .widget h4 {
-    font-family: 'Roboto', sans-serif;
+    font-family: avenir, sans-serif;
     font-size: 18px;
     font-weight: 500;
     padding: 10px 20px;
@@ -1456,4 +1463,17 @@ footer p {
     text-align: center;
     position: relative;
 
+}
+
+@media only screen and (max-width: 500px) {
+    .navigation-row {
+        float: none;
+    }
+    #nav li {
+        display: block;
+    }
+
+    #nav li:hover > ul {
+        display: none;;
+    }
 }

@@ -13,12 +13,12 @@
 									<img class="img-responsive news-item-img" src="<?= site_url($news->image) ?>" alt="<?= transText($news->name, 'en') ?>">
               </div>
               <div class="text text-single">
-									<h3><?= transText($news->name, 'en') ?></h3>
+									<h3><?= transText($news->name, get_current_front_lang()) ?></h3>
 									<ul class="status">
-										<li><i class="fa fa-calendar"></i><?= lang('date') ?> <?= date('n, Y', strtotime($news->created_at)) ?></li>
+										<li><i class="fa fa-calendar"></i> <?= lang('date') ?> <?= date('n, Y', strtotime($news->created_at)) ?></li>
 									</ul>
 									<p>
-                    <?= transText($news->description, 'en') ?>
+                    <?= transText($news->description, get_current_front_lang()) ?>
                   </p>
 								</div>
         </div>

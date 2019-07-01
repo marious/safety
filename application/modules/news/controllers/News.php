@@ -19,6 +19,7 @@ class News extends MY_Controller
     {
         if ($slug) 
         {
+            $slug = urldecode($slug);
             $news = $this->News_model->get_news_by_slug($slug);
             if ($news) 
             {

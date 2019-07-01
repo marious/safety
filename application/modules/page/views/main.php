@@ -9,6 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2><?= transText($page->name, get_current_front_lang()) ?></h2>
+                <hr>
                 <?= transText($page->content, get_current_front_lang());?>
             </div>
         </div>
