@@ -63,9 +63,6 @@ function make_slug($title, $lang = 'en')
 
 function transText($dataField , $lang = null)
 {
-    $languages = ['english' => 'en', 'arabic' => 'ar'];
-    $lang = get_current_front_lang();
-    $lang = $languages[$lang];
     if($dataField != '') {
         $text = json_decode($dataField);
         return $text->$lang;
@@ -145,7 +142,12 @@ function get_current_lang()
 
 function get_current_front_lang()
 {
-    return isset($_SESSION['public_site_language']) ? $_SESSION['public_site_language'] : 'arabic';
+    $lang =  isset($_SESSION['public_site_language']) ? $_SESSION['public_site_language'] : 'arabic';
+    if (strtolower($lang) == 'english') {
+        return 'en';
+    } else {
+        return 'ar';
+    }
 }
 
 
@@ -186,4 +188,14 @@ function get_caller_info() {
     $c .= ($class != '') ? ":" . $class . "->" : "";
     $c .= ($func != '') ? $func . "(): " : "";
     return($c);
+}
+
+
+function safe_urlencode($txt){
+    //$str = urlencode($txt);
+    $str = $txt;
+    $str = str_replace('.', '%2E', $str);
+    $str = str_replace('-', '%2D', $str);
+//    $str = iconv('utf-8','windows-1256', $str);
+    return urlencode($str);
 }

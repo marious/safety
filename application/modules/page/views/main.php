@@ -1,6 +1,6 @@
 <div class="inner-banner">
     <div class="container">
-        <h1><?= transText($page->name, 'en') ?></h1>
+        <h1><?= transText($page->name, get_current_front_lang()) ?></h1>
     </div>
 </div>
 
@@ -8,8 +8,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2><?= transText($page->name, 'en') ?></h2>
-                <?= transText($page->content, 'en');?>
+                <h2><?= transText($page->name, get_current_front_lang()) ?></h2>
+                <?= transText($page->content, get_current_front_lang());?>
             </div>
         </div>
     </div>

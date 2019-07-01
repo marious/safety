@@ -46,26 +46,26 @@
                 </div>
             </div>
             <div class="col-md-3 col-md-push-1">
-                <h2>Contact With Us</h2>
+                <h2><?= lang('contact_us') ?></h2>
                 <ul>
                     <li>
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <div class="text-col">
-                            <span>Main Head Office:</span>
+                            <span><?= lang('main_head_office') ?>:</span>
                             <strong></strong>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <div class="text-col">
-                            <span>Head Branch:</span>
+                            <span><?= lang('head_branch') ?>:</span>
                             <strong></strong>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
                         <div class="text-col">
-                            <span>Email us for Inquiry:</span>
+                            <span><?= lang('email_inquiry') ?>:</span>
                             <a href="mailto:">
                             <span class="__cf_email__">
 

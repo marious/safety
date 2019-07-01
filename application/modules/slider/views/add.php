@@ -26,7 +26,8 @@
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"><?= lang('ar_heading'); ?> </label>
 							<div class="col-sm-6">
-								<input type="text" autocomplete="off" class="form-control" name="ar_heading" value="<?= set_value('ar_heading', transText($slider->heading, 'en')); ?>">
+								<input type="text" autocomplete="off" class="form-control" name="ar_heading"
+                                       value="<?= set_value('ar_heading', transText($slider->heading, 'ar')); ?>">
                 <?php echo form_error('ar_heading', '<div class="error">', '</div>'); ?>
 
 							</div>

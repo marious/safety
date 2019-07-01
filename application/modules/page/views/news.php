@@ -19,16 +19,16 @@
               <?php foreach ($news as $row): ?>
 								<div class="post-item">
 									<div class="image-holder">
-										<img class="img-responsive" src="<?= site_url($row->image) ?>" alt="<?= transText($row->name, 'en') ?>">
+										<img class="img-responsive" src="<?= site_url($row->image) ?>" alt="<?= transText($row->name, get_current_front_lang()) ?>">
 									</div>
 									<div class="text">
-										<h3><a href="<?= site_url('news/item/' .transText($row->slug, 'en')) ?>"><?= transText($row->name, 'en') ?></a></h3>
+										<h3><a href="<?= site_url('news/item/' .transText($row->slug, 'en')) ?>"><?= transText($row->name, get_current_front_lang()) ?></a></h3>
 										<ul class="status">
-											<li><i class="fa fa-calendar"></i><?= lang('date') ?> <?= date('n, Y', strtotime($row->created_at)) ?></li>
+											<li> <i class="fa fa-calendar"></i> <?= lang('date') ?> <?= date('n, Y', strtotime($row->created_at)) ?></li>
 										</ul>
                     <p>
 
-                      <?= shortDescrip(transText($row->description, 'en'), 20) ?>
+                      <?= shortDescrip(transText($row->description, get_current_front_lang()), 60) ?>
 
                     </p>
 										<p class="button">
@@ -67,7 +67,7 @@
         <?php if (is_array($categories) && count($categories)): ?>
             <ul>
                 <?php foreach ($categories as $category): ?>
-                    <li><a href="<?= site_url('categories/item/' . transText($category->slug, 'en')) ?>"><?= transText($category->name, 'en') ?></a></li>
+                    <li><a href="<?= site_url('categories/item/' . transText($category->slug, 'en')) ?>"><?= transText($category->name, get_current_front_lang()) ?></a></li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>

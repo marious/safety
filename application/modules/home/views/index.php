@@ -31,10 +31,10 @@ $sliders = Modules::run('slider/get_all');
                     <div class="container">
                         <div class="caption vertical-center text-<?= $pos; ?>">
 
-                            <h1 class="<?=$class?> light-color"> <?= transText($slider->heading, 'en') ?> </h1>
-                            <p class="<?=$class . '-2'?> light-color"><?= transText($slider->content, 'en') ?></p>
+                            <h1 class="<?=$class?> light-color"> <?= transText($slider->heading, get_current_front_lang()) ?> </h1>
+                            <p class="<?=$class . '-2'?> light-color"><?= transText($slider->content, get_current_front_lang()) ?></p>
                             <div class="<?= $class . '-3'; ?>">
-                                <a href="<?= $slider->button_url; ?>" class="btn btn-large"><?= transText($slider->button_text, 'en') ?></a>
+                                <a href="<?= $slider->button_url; ?>" class="btn btn-large"><?= transText($slider->button_text, get_current_front_lang()) ?></a>
                             </div><!-- /.fadeIn -->
 
                         </div><!-- /.caption -->
@@ -55,8 +55,8 @@ $sliders = Modules::run('slider/get_all');
         <div class="row">
             <div class="col-md-12">
                 <div class="heading wow fadeInUp">
-                    <h2>Our Categories</h2>
-                    <p>Check Out Our Categories</p>
+                    <h2><?= lang('our_categories') ?></h2>
+                    <p><?= lang('check_our_categories') ?></p>
                 </div>
             </div>
         </div>
@@ -75,8 +75,8 @@ $sliders = Modules::run('slider/get_all');
                                     <div class="overlay"></div>
                                 </div>
                                 <div class="text">
-                                    <h3><a href="<?php echo site_url('categories/item/' . transText($category->slug, 'en')) ?>"><?php echo transText($category->name, 'en'); ?></a></h3>
-                                    <p><?php echo shortDescrip(transText($category->description, 'en'), 10); ?></p>
+                                    <h3><a href="<?php echo site_url('categories/item/' .  safe_urlencode(transText($category->slug, get_current_front_lang())) ) ?>"><?php echo transText($category->name, get_current_front_lang()); ?></a></h3>
+                                    <p><?php echo shortDescrip(transText($category->description, get_current_front_lang()), 10); ?></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -96,8 +96,8 @@ $sliders = Modules::run('slider/get_all');
         <div class="row">
             <div class="col-md-12">
                 <div class="heading wow fadeInUp">
-                    <h2>Our Services</h2>
-                    <p>Check Out All Our Services</p>
+                    <h2><?=  lang('our_services') ?></h2>
+                    <p><?= lang('check_our_services') ?></p>
                 </div>
             </div>
         </div>
@@ -112,9 +112,9 @@ $sliders = Modules::run('slider/get_all');
                             <div class="photo" style="background-image:url(<?php echo site_url($service->image); ?>);">
                             </div>
                             <div class="text">
-                                <h3><a href="<?= site_url('services/' . transText($service->slug, 'en')); ?>"><?php echo transText($service->name, 'en'); ?></a></h3>
+                                <h3><a href="<?= site_url('services/' . transText($service->slug, get_current_front_lang())); ?>"><?php echo transText($service->name, get_current_front_lang()); ?></a></h3>
                                 <p>
-                                    <?php echo shortDescrip(transText($service->description, 'en'), 20) ?>
+                                    <?php echo shortDescrip(transText($service->description, get_current_front_lang()), 20) ?>
                                 </p>
                             </div>
                         </div>
@@ -136,8 +136,8 @@ $sliders = Modules::run('slider/get_all');
         <div class="row">
             <div class="col-md-12">
                 <div class="heading wow fadeInUp">
-                    <h2>Latest News</h2>
-                    <p>See All Our Updated and Latest News</p>
+                    <h2><?= lang('latest_news') ?></h2>
+                    <p><?= lang('see_latest_news')  ?></p>
                 </div>
             </div>
         </div>
@@ -160,8 +160,8 @@ $sliders = Modules::run('slider/get_all');
                                     <div class="photo" style="background-image:url(<?php echo site_url($row->image) ?>);"></div>
                                 </div>
                                 <div class="text">
-                                    <h3><a href="<?php echo site_url('news/' . transText($row->slug, 'en')); ?>"><?php echo transText($row->name, 'en'); ?></a></h3>
-                                    <p><?php echo shortDescrip(transText($row->description, 'en'), 20) ?></p>
+                                    <h3><a href="<?php echo site_url('news/' . transText($row->slug, get_current_front_lang())); ?>"><?php echo transText($row->name, get_current_front_lang()); ?></a></h3>
+                                    <p><?php echo shortDescrip(transText($row->description, get_current_front_lang()), 20) ?></p>
                                 </div>
                             </div>
                             <?php
@@ -190,26 +190,26 @@ $sliders = Modules::run('slider/get_all');
                 </div>
             </div>
             <div class="col-md-3 col-md-push-1">
-                <h2>Contact With Us</h2>
+                <h2><?= lang('contact_us') ?></h2>
                 <ul>
                     <li>
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <div class="text-col">
-                            <span>Main Head Office:</span>
+                            <span><?= lang('main_head_office') ?>:</span>
                             <strong></strong>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <div class="text-col">
-                            <span>Head Branch:</span>
+                            <span><?= lang('head_branch') ?>:</span>
                             <strong></strong>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
                         <div class="text-col">
-                            <span>Email us for Inquiry:</span>
+                            <span><?= lang('email_inquiry') ?>:</span>
                             <a href="mailto:">
                             <span class="__cf_email__">
 

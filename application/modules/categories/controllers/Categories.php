@@ -17,6 +17,7 @@ class Categories extends MY_Controller
 
     public function item($slug = false)
     {
+        var_dump('hi');exit;
         if ($slug)
         {
             $category = $this->Category_model->get_by_slug($slug);

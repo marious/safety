@@ -468,6 +468,7 @@ span.logo img {
     text-align: center;
     font-size: 14px;
     margin-bottom: 0;
+    direction: rtl;
 }
 
 .categories-v1 .item {
@@ -513,7 +514,6 @@ span.logo img {
     padding-top: 50px;
     padding-bottom: 50px;
     background-color: #f2f3f3;
-
 }
 
 .news-v1 .heading {
@@ -570,7 +570,7 @@ span.logo img {
 }
 
 .news-v1 .text h3 {
-    text-align: left;
+    text-align: right;
     color: #333;
     font-weight: 700;
     font-size: 16px;
@@ -597,10 +597,11 @@ span.logo img {
 }
 
 .news-v1 .text p {
-    text-align: left;
+    text-align: right;
     margin-bottom: 0;
     font-size: 14px;
     line-height: 1.4;
+    direction: rtl;
 }
 
 .news-v1 .item {
@@ -730,9 +731,9 @@ section.contact {
 
 .blog .image-holder {
     width: 285px;
-    float: left;
+    float: right;
     position: relative;
-    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .blog .image-holder-service {
@@ -752,7 +753,7 @@ section.contact {
 
 .blog .image-holder .date {
     position: absolute;
-    right: 10px;
+    left: 10px;
     bottom: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -773,7 +774,7 @@ section.contact {
 .blog .image-holder .day:before {
     position: absolute;
     top: 22px;
-    left: 24px;
+    right: 24px;
     color: #0f4680;
     font-family: 'FontAwesome';
     content: '\f0d7';
@@ -792,8 +793,8 @@ section.contact {
 }
 
 .blog .text {
-    width: calc(100% - 300px);
-    float: left;
+    width: calc(100% - 400px);
+    float: right;
 }
 
 .blog .text-single {
@@ -833,20 +834,22 @@ section.contact {
 
 .blog .text ul.status {
     overflow: hidden;
+    padding-right: 0;
+    margin-right: 0;
     margin-bottom: 15px;
 }
 
 .blog .text ul.status li {
-    text-align: left;
+    text-align: right;
     margin-bottom: 15px;
     color: #0f4680;
     font-size: 14px;
-    float: left;
+    float: right;
     list-style-type: none;
-    margin-right: 15px;
     line-height: 18px;
     margin-bottom: 5px;
     padding-left: 0;
+    padding-right: 0;
 }
 
 .blog .text ul.status li a {
@@ -854,7 +857,7 @@ section.contact {
 }
 
 .blog .text ul.status li i {
-    margin-right: 8px;
+    margin-right: 0px;
 }
 
 .blog ul.status li:before {
@@ -863,18 +866,18 @@ section.contact {
 
 .blog ul li {
     position: relative;
-    padding-left: 18px;
+    padding-right: 18px;
     margin-bottom: 10px;
     list-style-type: none;
 }
 
 .blog ul.status li:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-family: 'FontAwesome';
-    content: '\f044';
-    color: #333;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*font-family: 'FontAwesome';*/
+    /*content: '\f044';*/
+    /*color: #333;*/
 }
 
 .blog h1 {
@@ -890,6 +893,7 @@ section.contact {
 }
 
 .blog h3 {
+    text-align: right;
     font-size: 18px;
     color: #333;
     font-weight: 700;
@@ -1377,6 +1381,10 @@ section.contact {
     color: #fff;
 }
 
+.widget ul {
+    padding-right: 0;
+}
+
 .widget ul li {
     display: block;
     float: none;
@@ -1394,7 +1402,7 @@ section.contact {
     position: absolute;
     color: #333;
     top: 1px;
-    left: 3px;
+    right: 3px;
 }
 
 .widget ul li a {

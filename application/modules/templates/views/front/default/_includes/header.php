@@ -3,7 +3,7 @@
     <div class="container">
       <div class="left-box">
         <span class="title">
-          <?php if (get_current_front_lang() == 'english'): ?>
+          <?php if (get_current_front_lang() == 'en'): ?>
           <a href="<?= site_url('home/lang/ar') ?>"> AR
             <img src="<?= site_url('assets/images/country-flag-Egypt.png') ?>" alt="ar-lang">
           </a>
