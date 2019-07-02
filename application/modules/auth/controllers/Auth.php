@@ -21,6 +21,7 @@ class Auth extends MY_Controller
 	 */
 	public function login()
 	{
+	    if (isset($_SESSION['user_id'])) { redirect(''); }
 		$this->data['title'] = $this->lang->line('login_heading');
 
 		// validate form input
@@ -38,7 +39,7 @@ class Auth extends MY_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('/dashboard', 'refresh');
 			}
 			else
 			{
@@ -86,7 +87,7 @@ class Auth extends MY_Controller
 
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		redirect('/', 'refresh');
 	}
 
 

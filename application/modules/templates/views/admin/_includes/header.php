@@ -24,41 +24,28 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Mohammed Raya</span>
+                <img src="<?= site_url('assets/admin/img/user.png') ?>" class="img-circle" alt="User Image" width="40" height="30">
+
+                <span class="hidden-xs"><?= $_SESSION['username'] ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Mohammed Raya - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
+
                 </div>
                 <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php if (get_current_front_lang() == 'ar') {echo site_url('dashboard/lang/en'); } else {
+                      echo site_url('dashboard/lang/ar');
+                  } ?>" class="btn btn-default btn-flat"><?php echo get_current_front_lang() == 'ar' ? 'en' : 'ar';  ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?= site_url('auth/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

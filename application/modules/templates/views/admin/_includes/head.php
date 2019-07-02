@@ -15,10 +15,20 @@
   <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>bower_components/toastr/toastr.min.css">
   <link rel="stylesheet" href="<?= base_url() . 'assets/admin/'?>bower_components/select2/dist/css/select2.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>dist/css/AdminLTE.min.css">
+
+    <?php  if(get_current_front_lang() == 'ar'): ?>
+        <link rel="stylesheet" href="<?= site_url('assets/admin/css/AdminLTE.min.css') ?>">
+        <link rel="stylesheet" href="<?= site_url('assets/admin/css/_all-skins.min.css') ?>">
+        <link rel="stylesheet" href="<?= site_url('assets/admin/css/bootstrap-rtl.min.css') ?>">
+        <link rel="stylesheet" href="<?= site_url('assets/admin/css/rtl.css') ?>">
+    <?php else: ?>
+        <link rel="stylesheet" href="<?php echo  base_url() . '/assets/admin/'; ?>dist/css/AdminLTE.min.css">
+
+        <link rel="stylesheet" href="<?php  echo base_url() . '/assets/admin/'; ?>dist/css/skins/_all-skins.min.css">
+
+    <?php endif; ?>
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?= base_url() . '/assets/admin/'; ?>dist/css/skins/_all-skins.min.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="<?= base_url().'/assets/admin/css/style.css'; ?>">

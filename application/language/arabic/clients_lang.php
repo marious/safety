@@ -1,3 +1,3 @@
 <?php
-$lang['edit_client'] = 'Edit Client';
-$lang['add_new_client'] = 'Add New Client';
+$lang['edit_client'] = 'تعديل العميل';
+$lang['add_new_client'] = 'إضافة عميل جديد';

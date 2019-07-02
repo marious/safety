@@ -2,11 +2,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?= site_url('assets/admin/img/user.png') ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p><?= $_SESSION['username'] ?></p>
+<!--          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
         </div>
       </div>
       <!-- search form -->
@@ -35,7 +35,7 @@
                   <a href="#">
                       <i class="fa fa-list-alt"></i> <span><?= lang('pages'); ?></span>
                       <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
             </span>
                   </a>
                   <ul class="treeview-menu">
@@ -53,7 +53,7 @@
           <a href="#">
             <i class="fa fa-dashboard"></i> <span><?= lang('services'); ?></span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
             </span>
           </a>
           <ul class="treeview-menu">
@@ -73,7 +73,7 @@
         <a href="#">
             <i class="fa fa-server"></i> <span><?= lang('categories'); ?></span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
             </span>
           </a>
           <ul class="treeview-menu">
@@ -92,7 +92,7 @@
                   <a href="#">
                       <i class="fa fa-cubes"></i> <span><?= lang('products'); ?></span>
                       <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
             </span>
                   </a>
                   <ul class="treeview-menu">
@@ -111,7 +111,7 @@
                   <a href="#">
                       <i class="fa fa-newspaper-o"></i> <span><?= lang('news'); ?></span>
                       <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
             </span>
                   </a>
                   <ul class="treeview-menu">
@@ -130,7 +130,7 @@
                   <a href="#">
                       <i class="fa fa-file-image-o"></i> <span><?= lang('slider'); ?></span>
                       <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
             </span>
                   </a>
                   <ul class="treeview-menu">
@@ -152,7 +152,7 @@
                   <a href="#">
                       <i class="fa fa-users"></i> <span><?= lang('clients'); ?></span>
                       <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
             </span>
                   </a>
                   <ul class="treeview-menu">
@@ -169,7 +169,7 @@
           <li class="treeview <?= is_sidebar_menu_active('users'); ?>">
               <a href="#"><i class="fa fa-user"></i> <span><?= lang('users') ?></span>
                   <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
                 </span>
               </a>
             <ul class="treeview-menu">
@@ -186,7 +186,7 @@
           <li class="treeview <?= is_sidebar_menu_active('roles'); ?>">
               <a href="#"><i class="fa fa-key"></i> <span><?= lang('roles_and_permissions') ?></span>
                   <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-angle-left <?= get_icon_pull() ?>"></i>
                 </span>
               </a>
               <ul class="treeview-menu">

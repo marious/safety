@@ -212,3 +212,12 @@ function safe_urlencode($txt){
     }
     return urlencode($str);
 }
+
+function get_icon_pull()
+{
+    if (get_current_front_lang() == 'ar'){
+        return 'pull-left';
+    } else {
+        return 'pull-right';
+    }
+}

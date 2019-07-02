@@ -1,5 +1,5 @@
 <?php
-$lang['add_new_role'] = 'Add New Role';
-$lang['all_roles'] = 'All Roles';
-$lang['role_name'] = 'Role Name';
-$lang['role_description'] = 'Role Description';
+$lang['add_new_role'] = 'اضافة صلاحية جديدة';
+$lang['all_roles'] = 'كل الصلاحيات';
+$lang['role_name'] = 'اسم الصلاحية';
+$lang['role_description'] = 'وصف الصلاحية';

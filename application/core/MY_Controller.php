@@ -34,7 +34,6 @@ class MY_Controller extends MX_Controller
         $this->config->set_item('language', $_SESSION['public_site_language']);
     }
 
-
   }
 
 

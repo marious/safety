@@ -113,4 +113,38 @@ class Service_model extends MY_Model
     }
 
 
+
+    public function get_service_by_slug($slug)
+    {
+        $slugs = $this->get_all_slugs();
+        if (array_key_exists($slug, $slugs))
+        {
+            $service_id = $slugs[$slug];
+        } else {
+            return false;
+        }
+
+        if ($service_id && is_numeric($service_id))
+        {
+            return $this->get($service_id, true);
+        }
+        return false;
+    }
+
+
+    public function get_all_slugs()
+    {
+        $this->db->select('*');
+        $this->db->from('services');
+        $q = $this->db->get();
+        $result = $q->result();
+
+        $data = [];
+        foreach ($result as $row) {
+            $data[transText($row->slug, 'en')] = $row->id;
+            $data[transText($row->slug, 'ar')] = $row->id;
+        }
+
+        return $data;
+    }
 }

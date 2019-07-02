@@ -1,8 +1,8 @@
 <?php
-$lang['edit_user'] = 'Edit User';
-$lang['add_new_user'] = 'Add New User';
-$lang['password'] = 'Password';
-$lang['conf_password'] = 'Confirm Password';
-$lang['select_role_group'] = 'Select Role Group';
-$lang['role_group'] = 'Role Group';
-$lang['password_note'] = 'You can keep password field empty if you don\'t want change password.';
+$lang['edit_user'] = 'تعديل المستخدم';
+$lang['add_new_user'] = 'إضافة مستخدم جديد';
+$lang['password'] = 'الرقم السرى';
+$lang['conf_password'] = 'تأكيد الرقم السرى';
+$lang['select_role_group'] = 'اختر مجموعة الصلاحيات';
+$lang['role_group'] = 'مجموعة الصلاحيات';
+$lang['password_note'] = 'بإمكانك ترك حقل الرقم السرى فارغ ان لم ترغب فى تغييره';

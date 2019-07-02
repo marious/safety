@@ -15,6 +15,25 @@ class Services extends MY_Controller
       $this->load->model('Service_model');
   }
 
+    public function item($slug = false)
+    {
+        if ($slug)
+        {
+            $slug = urldecode($slug);
+            $service = $this->Service_model->get_service_by_slug($slug);
+            if ($service)
+            {
+                $this->data['service'] = $service;
+                $this->public_template('service_item', $this->data);
+            }
+            else
+            {
+                redirect(site_url());
+
+            }
+        }
+    }
+
 
   public function get_all()
   {

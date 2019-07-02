@@ -1,7 +1,7 @@
 <?php 
-$lang['edit_category'] = 'Edit Category';
-$lang['add_new_category'] = 'Add New Category';
-$lang['en_category_name'] = 'Category Name [EN]';
-$lang['ar_category_name'] = 'Category Name [AR]';
-$lang['service'] = 'Service';
-$lang['select_service'] = 'Select Service';
+$lang['edit_category'] = 'تعديل القسم';
+$lang['add_new_category'] = 'إضافة قسم جديد';
+$lang['en_category_name'] = 'اسم القسم [إنجليزى]';
+$lang['ar_category_name'] = 'اسم القسم [عربى]';
+$lang['service'] = 'الخدمة';
+$lang['select_service'] = 'اختر الخدمة';

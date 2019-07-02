@@ -112,7 +112,7 @@ $sliders = Modules::run('slider/get_all');
                             <div class="photo" style="background-image:url(<?php echo site_url($service->image); ?>);">
                             </div>
                             <div class="text">
-                                <h3><a href="<?= site_url('services/' . transText($service->slug, get_current_front_lang())); ?>"><?php echo transText($service->name, get_current_front_lang()); ?></a></h3>
+                                <h3><a href="<?= site_url('services/item/' . transText($service->slug, get_current_front_lang())); ?>"><?php echo transText($service->name, get_current_front_lang()); ?></a></h3>
                                 <p>
                                     <?php echo shortDescrip(transText($service->description, get_current_front_lang()), 20) ?>
                                 </p>
