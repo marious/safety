@@ -234,8 +234,8 @@ span.logo img {
 }
 
 #nav li ul {
-    /* position: absolute;
-    left: 0;
+    position: absolute;
+    right: 0;
     top: 100%;
     width: 240px;
     border: 1px solid #ccc;
@@ -244,7 +244,7 @@ span.logo img {
     display: none;
     list-style: none;
     z-index: 10;
-    text-align: left; */
+    text-align: left;
 }
 
 #nav li:hover>ul {
@@ -1486,14 +1486,24 @@ footer p {
     #nav li > ul {
         display: block;
         padding-right: 0;
+
+        position: static;
+        background: #fff;
+        width: 100%;
+        padding: 0;
+        list-style: none;
+        z-index: 10;
+        text-align: left;
+        border: none;
     }
 
     #nav li ul li {
+        border: none;
     }
 
     #nav li ul li a{
         text-align: justify;
-        padding-right: 160px;
+        padding-right: 220px;
     }
 
     #mainSlider h1 {

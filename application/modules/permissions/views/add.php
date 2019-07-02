@@ -22,6 +22,8 @@
                         <label for="" class="col-sm-2 control-label"></label>
                         <div class="col-sm-6">
                             <button type="submit" class="btn btn-success pull-left" name="form1"><?= lang('save'); ?></button>
+                            <a href="<?= site_url('news/all') ?>" class="btn btn-default m-l-10"><?= lang('cancel') ?></a>
+                            <a href="<?= site_url('news/all') ?>" class="btn btn-default m-l-10"><?= lang('cancel') ?></a>
                         </div>
                     </div>
                 </div>

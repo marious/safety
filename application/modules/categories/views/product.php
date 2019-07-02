@@ -1,6 +1,6 @@
 <div class="inner-banner">
     <div class="container">
-        <h1><?= transText($product->name, 'en') ?></h1>
+        <h1><?= transText($product->name, get_current_front_lang()) ?></h1>
     </div>
 </div>
 
@@ -10,10 +10,10 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="detail-page">
-                    <img src="<?= site_url($product->image) ?>" alt="<?= transText($product->name, 'en') ?>" class="center-image">
+                    <img src="<?= site_url($product->image) ?>" alt="<?= transText($product->name, get_current_front_lang()) ?>" class="center-image">
                     <hr>
                     <p>
-                        <?= transText($product->description, 'en') ?>
+                        <?= transText($product->description, get_current_front_lang()) ?>
                     </p>
                 </div>
             </div>

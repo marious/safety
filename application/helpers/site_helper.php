@@ -28,7 +28,7 @@ function setting($setting_name = null) {
   $CI =& get_instance();
   if ($setting_name) {
     $query = $CI->db->get_where('settings', ['name' => $setting_name]);
-    return $query->row() ? $query->row()->value : '';
+    return $query->row() ? trim($query->row()->value) : '';
   }
   return '';
 }

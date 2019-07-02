@@ -17,7 +17,6 @@ class Categories extends MY_Controller
 
     public function item($slug = false)
     {
-        var_dump($slug);exit;
         if ($slug)
         {
             $slug = urldecode($slug);
@@ -42,6 +41,7 @@ class Categories extends MY_Controller
     {
         if ($slug)
         {
+            $slug = urldecode($slug);
             $this->load->module('products');
             $product = $this->products->Product_model->get_by_slug($slug);
             if ($product)

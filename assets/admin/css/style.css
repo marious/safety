@@ -6,6 +6,10 @@
     padding: 15px;
 }
 
+.m-l-10 {
+    margin-left: 10px;
+}
+
 .error {
     color: #d14;
 }

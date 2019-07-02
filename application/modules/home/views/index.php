@@ -186,7 +186,7 @@ $sliders = Modules::run('slider/get_all');
         <div class="row">
             <div class="col-md-8">
                 <div class="map-box">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13814.800537083685!2d31.241221!3d30.0454596!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xad36b76e6d0e4ea!2sSafety+Point!5e0!3m2!1sen!2skw!4v1519813720767"  height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                    <?= setting('contact_map_iframe') ?>
                 </div>
             </div>
             <div class="col-md-3 col-md-push-1">
@@ -196,23 +196,23 @@ $sliders = Modules::run('slider/get_all');
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <div class="text-col">
                             <span><?= lang('main_head_office') ?>:</span>
-                            <strong></strong>
+                            <strong><?php echo get_current_front_lang() == 'ar' ? setting('ar_contact_address') : setting('en_contact_address');  ?></strong>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <div class="text-col">
                             <span><?= lang('head_branch') ?>:</span>
-                            <strong></strong>
+                            <strong><?= setting('contact_phone') ?></strong>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
                         <div class="text-col">
                             <span><?= lang('email_inquiry') ?>:</span>
-                            <a href="mailto:">
+                            <a href="mailto:setting('contact_email')">
                             <span class="__cf_email__">
-
+                                <?= setting('contact_email') ?>
                             </span>
                             </a>
                         </div>
