@@ -98,3 +98,4 @@ $lang['main_menu'] = 'Main Menu';
 $lang['title'] = 'Title';
 $lang['safety_point'] = 'Safety Point';
 $lang['main_page_title'] = 'Main Page';
+$lang['site_messages'] = 'Site Messages';

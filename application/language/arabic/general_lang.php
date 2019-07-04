@@ -94,3 +94,4 @@ $lang['main_menu'] = 'القائمة الرئيسية';
 $lang['title'] = 'العنوان';
 $lang['safety_point'] = 'سيفتى بوينت';
 $lang['main_page_title'] = 'الرئيسية';
+$lang['site_messages'] = 'رسائل الموقع';

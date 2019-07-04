@@ -11,23 +11,23 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <label for="name"><?= lang('name'); ?></label>
-                    <input type="text" placeholder="<?= lang('enter_name') ?>" required id="name">
+                    <input type="text" placeholder="<?= lang('enter_name') ?>" required id="name" name="name">
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label for="email"><?=lang('email')?></label>
-                    <input type="text" placeholder="<?=lang('enter_email')?>" required id="email">
+                    <input type="text" placeholder="<?=lang('enter_email')?>" required id="email" name="email">
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label for="contact-phone"><?=lang('contact_phone')?></label>
-                    <input type="text" placeholder="<?=lang('enter_contact_phone')?>" required id="contact-phone">
+                    <input type="text" placeholder="<?=lang('enter_contact_phone')?>" required id="contact-phone" name="phone">
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label for="subject"><?=lang('subject')?></label>
-                    <input type="text" placeholder="<?= lang('enter_subject') ?>" required id="subject">
+                    <input type="text" placeholder="<?= lang('enter_subject') ?>" required id="subject" autocomplete="off" name="subject">
                 </div>
                 <div class="col-md-12 col-sm-12">
                     <label for="message"><?= lang('message') ?></label>
-                    <textarea required placeholder="<?= lang('enter_message') ?>" cols="10" rows="10" id="message"></textarea>
+                    <textarea required placeholder="<?= lang('enter_message') ?>" cols="10" rows="10" id="message" name="message"></textarea>
                 </div>
                 <div class="col-md-12">
                     <input type="submit" value="<?= lang('get_contact') ?>">
