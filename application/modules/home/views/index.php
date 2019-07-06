@@ -34,7 +34,9 @@ $sliders = Modules::run('slider/get_all');
                             <h1 class="<?=$class?> light-color"> <?= transText($slider->heading, get_current_front_lang()) ?> </h1>
                             <p class="<?=$class . '-2'?> light-color"><?= transText($slider->content, get_current_front_lang()) ?></p>
                             <div class="<?= $class . '-3'; ?>">
+                                <?php if (transText($slider->button_text, get_current_front_lang())): ?>
                                 <a href="<?= $slider->button_url; ?>" class="btn btn-large"><?= transText($slider->button_text, get_current_front_lang()) ?></a>
+                                <?php endif; ?>
                             </div><!-- /.fadeIn -->
 
                         </div><!-- /.caption -->
